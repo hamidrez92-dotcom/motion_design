@@ -21,6 +21,40 @@
    "ende": 3.51,
    "sprech": "Installier diese fünf Plugins, bevor du Claude nutzt.",
    "text": "Erst die Plugins. Dann Claude.",
+   "woerter": [
+    {
+     "wort": "Installier",
+     "zeit": 0.0
+    },
+    {
+     "wort": "diese",
+     "zeit": 0.41
+    },
+    {
+     "wort": "fünf",
+     "zeit": 0.83
+    },
+    {
+     "wort": "Plugins,",
+     "zeit": 1.24
+    },
+    {
+     "wort": "bevor",
+     "zeit": 1.66
+    },
+    {
+     "wort": "du",
+     "zeit": 2.07
+    },
+    {
+     "wort": "Claude",
+     "zeit": 2.48
+    },
+    {
+     "wort": "nutzt.",
+     "zeit": 2.9
+    }
+   ],
    "visuals": [
     {
      "zeit": 1.24,
@@ -37,6 +71,60 @@
    "ende": 9.44,
    "sprech": "Ohne Plugins ist Claude ein Chatbot. Mit Plugins arbeitet Claude wie ein Mitarbeiter.",
    "text": "Chatbot → Mitarbeiter",
+   "woerter": [
+    {
+     "wort": "Ohne",
+     "zeit": 3.66
+    },
+    {
+     "wort": "Plugins",
+     "zeit": 4.07
+    },
+    {
+     "wort": "ist",
+     "zeit": 4.49
+    },
+    {
+     "wort": "Claude",
+     "zeit": 4.9
+    },
+    {
+     "wort": "ein",
+     "zeit": 5.32
+    },
+    {
+     "wort": "Chatbot.",
+     "zeit": 5.73
+    },
+    {
+     "wort": "Mit",
+     "zeit": 6.34
+    },
+    {
+     "wort": "Plugins",
+     "zeit": 6.76
+    },
+    {
+     "wort": "arbeitet",
+     "zeit": 7.17
+    },
+    {
+     "wort": "Claude",
+     "zeit": 7.58
+    },
+    {
+     "wort": "wie",
+     "zeit": 8.0
+    },
+    {
+     "wort": "ein",
+     "zeit": 8.41
+    },
+    {
+     "wort": "Mitarbeiter.",
+     "zeit": 8.83
+    }
+   ],
    "visuals": [
     {
      "zeit": 5.73,
@@ -59,6 +147,68 @@
    "ende": 16.2,
    "sprech": "Stell dir einen neuen Kollegen vor. Am ersten Tag bekommt er die Einarbeitungsmappe seiner Abteilung.",
    "text": null,
+   "woerter": [
+    {
+     "wort": "Stell",
+     "zeit": 9.59
+    },
+    {
+     "wort": "dir",
+     "zeit": 10.0
+    },
+    {
+     "wort": "einen",
+     "zeit": 10.42
+    },
+    {
+     "wort": "neuen",
+     "zeit": 10.83
+    },
+    {
+     "wort": "Kollegen",
+     "zeit": 11.24
+    },
+    {
+     "wort": "vor.",
+     "zeit": 11.66
+    },
+    {
+     "wort": "Am",
+     "zeit": 12.27
+    },
+    {
+     "wort": "ersten",
+     "zeit": 12.69
+    },
+    {
+     "wort": "Tag",
+     "zeit": 13.1
+    },
+    {
+     "wort": "bekommt",
+     "zeit": 13.51
+    },
+    {
+     "wort": "er",
+     "zeit": 13.93
+    },
+    {
+     "wort": "die",
+     "zeit": 14.34
+    },
+    {
+     "wort": "Einarbeitungsmappe",
+     "zeit": 14.76
+    },
+    {
+     "wort": "seiner",
+     "zeit": 15.17
+    },
+    {
+     "wort": "Abteilung.",
+     "zeit": 15.58
+    }
+   ],
    "visuals": [
     {
      "zeit": 11.24,
@@ -81,6 +231,68 @@
    "ende": 22.95,
    "sprech": "Genau das ist ein Plugin. Skills und Verbindungen zu deinen Tools, gebündelt für einen Job.",
    "text": "Plugin = Skills + Connectors",
+   "woerter": [
+    {
+     "wort": "Genau",
+     "zeit": 16.35
+    },
+    {
+     "wort": "das",
+     "zeit": 16.76
+    },
+    {
+     "wort": "ist",
+     "zeit": 17.17
+    },
+    {
+     "wort": "ein",
+     "zeit": 17.59
+    },
+    {
+     "wort": "Plugin.",
+     "zeit": 18.0
+    },
+    {
+     "wort": "Skills",
+     "zeit": 18.62
+    },
+    {
+     "wort": "und",
+     "zeit": 19.03
+    },
+    {
+     "wort": "Verbindungen",
+     "zeit": 19.44
+    },
+    {
+     "wort": "zu",
+     "zeit": 19.86
+    },
+    {
+     "wort": "deinen",
+     "zeit": 20.27
+    },
+    {
+     "wort": "Tools,",
+     "zeit": 20.68
+    },
+    {
+     "wort": "gebündelt",
+     "zeit": 21.1
+    },
+    {
+     "wort": "für",
+     "zeit": 21.51
+    },
+    {
+     "wort": "einen",
+     "zeit": 21.93
+    },
+    {
+     "wort": "Job.",
+     "zeit": 22.34
+    }
+   ],
    "visuals": [
     {
      "zeit": 18.0,
@@ -103,6 +315,40 @@
    "ende": 26.61,
    "sprech": "Marketing plant Kampagnen und Posts in deiner Markenstimme.",
    "text": "Marketing",
+   "woerter": [
+    {
+     "wort": "Marketing",
+     "zeit": 23.1
+    },
+    {
+     "wort": "plant",
+     "zeit": 23.52
+    },
+    {
+     "wort": "Kampagnen",
+     "zeit": 23.93
+    },
+    {
+     "wort": "und",
+     "zeit": 24.34
+    },
+    {
+     "wort": "Posts",
+     "zeit": 24.76
+    },
+    {
+     "wort": "in",
+     "zeit": 25.17
+    },
+    {
+     "wort": "deiner",
+     "zeit": 25.59
+    },
+    {
+     "wort": "Markenstimme.",
+     "zeit": 26.0
+    }
+   ],
    "visuals": [
     {
      "zeit": 23.1,
@@ -125,6 +371,44 @@
    "ende": 30.69,
    "sprech": "Finance macht aus deiner Tabelle eine Gewinn- und Verlustrechnung.",
    "text": "Finance",
+   "woerter": [
+    {
+     "wort": "Finance",
+     "zeit": 26.76
+    },
+    {
+     "wort": "macht",
+     "zeit": 27.18
+    },
+    {
+     "wort": "aus",
+     "zeit": 27.59
+    },
+    {
+     "wort": "deiner",
+     "zeit": 28.01
+    },
+    {
+     "wort": "Tabelle",
+     "zeit": 28.42
+    },
+    {
+     "wort": "eine",
+     "zeit": 28.83
+    },
+    {
+     "wort": "Gewinn-",
+     "zeit": 29.25
+    },
+    {
+     "wort": "und",
+     "zeit": 29.66
+    },
+    {
+     "wort": "Verlustrechnung.",
+     "zeit": 30.07
+    }
+   ],
    "visuals": [
     {
      "zeit": 26.76,
@@ -147,6 +431,36 @@
    "ende": 33.93,
    "sprech": "Legal markiert riskante Klauseln, bevor du unterschreibst.",
    "text": "Legal",
+   "woerter": [
+    {
+     "wort": "Legal",
+     "zeit": 30.84
+    },
+    {
+     "wort": "markiert",
+     "zeit": 31.25
+    },
+    {
+     "wort": "riskante",
+     "zeit": 31.67
+    },
+    {
+     "wort": "Klauseln,",
+     "zeit": 32.08
+    },
+    {
+     "wort": "bevor",
+     "zeit": 32.49
+    },
+    {
+     "wort": "du",
+     "zeit": 32.91
+    },
+    {
+     "wort": "unterschreibst.",
+     "zeit": 33.32
+    }
+   ],
    "visuals": [
     {
      "zeit": 30.84,
@@ -169,6 +483,52 @@
    "ende": 38.84,
    "sprech": "Design sagt dir ehrlich, was an deiner Seite nach KI aussieht.",
    "text": "Design",
+   "woerter": [
+    {
+     "wort": "Design",
+     "zeit": 34.08
+    },
+    {
+     "wort": "sagt",
+     "zeit": 34.5
+    },
+    {
+     "wort": "dir",
+     "zeit": 34.91
+    },
+    {
+     "wort": "ehrlich,",
+     "zeit": 35.33
+    },
+    {
+     "wort": "was",
+     "zeit": 35.74
+    },
+    {
+     "wort": "an",
+     "zeit": 36.15
+    },
+    {
+     "wort": "deiner",
+     "zeit": 36.57
+    },
+    {
+     "wort": "Seite",
+     "zeit": 36.98
+    },
+    {
+     "wort": "nach",
+     "zeit": 37.39
+    },
+    {
+     "wort": "KI",
+     "zeit": 37.81
+    },
+    {
+     "wort": "aussieht.",
+     "zeit": 38.22
+    }
+   ],
    "visuals": [
     {
      "zeit": 34.08,
@@ -191,6 +551,48 @@
    "ende": 43.32,
    "sprech": "Und Productivity führt deine Aufgaben und merkt sich deine Projekte.",
    "text": "Productivity",
+   "woerter": [
+    {
+     "wort": "Und",
+     "zeit": 38.99
+    },
+    {
+     "wort": "Productivity",
+     "zeit": 39.4
+    },
+    {
+     "wort": "führt",
+     "zeit": 39.81
+    },
+    {
+     "wort": "deine",
+     "zeit": 40.23
+    },
+    {
+     "wort": "Aufgaben",
+     "zeit": 40.64
+    },
+    {
+     "wort": "und",
+     "zeit": 41.06
+    },
+    {
+     "wort": "merkt",
+     "zeit": 41.47
+    },
+    {
+     "wort": "sich",
+     "zeit": 41.88
+    },
+    {
+     "wort": "deine",
+     "zeit": 42.3
+    },
+    {
+     "wort": "Projekte.",
+     "zeit": 42.71
+    }
+   ],
    "visuals": [
     {
      "zeit": 39.4,
@@ -213,6 +615,64 @@
    "ende": 49.87,
    "sprech": "Installiert in etwa zwei Minuten. Customize, Plugins, Discover. Nimm nur die mit by Anthropic.",
    "text": "~2 Minuten · bezahlter Plan",
+   "woerter": [
+    {
+     "wort": "Installiert",
+     "zeit": 43.47
+    },
+    {
+     "wort": "in",
+     "zeit": 43.89
+    },
+    {
+     "wort": "etwa",
+     "zeit": 44.3
+    },
+    {
+     "wort": "zwei",
+     "zeit": 44.72
+    },
+    {
+     "wort": "Minuten.",
+     "zeit": 45.13
+    },
+    {
+     "wort": "Customize,",
+     "zeit": 45.74
+    },
+    {
+     "wort": "Plugins,",
+     "zeit": 46.16
+    },
+    {
+     "wort": "Discover.",
+     "zeit": 46.57
+    },
+    {
+     "wort": "Nimm",
+     "zeit": 47.18
+    },
+    {
+     "wort": "nur",
+     "zeit": 47.6
+    },
+    {
+     "wort": "die",
+     "zeit": 48.01
+    },
+    {
+     "wort": "mit",
+     "zeit": 48.43
+    },
+    {
+     "wort": "by",
+     "zeit": 48.84
+    },
+    {
+     "wort": "Anthropic.",
+     "zeit": 49.25
+    }
+   ],
    "visuals": [
     {
      "zeit": 44.72,
@@ -241,6 +701,56 @@
    "ende": 55.38,
    "sprech": "Dann kommt das Einarbeitungsgespräch. Ein einziger Prompt, und Claude fragt dich aus.",
    "text": "Ein Prompt",
+   "woerter": [
+    {
+     "wort": "Dann",
+     "zeit": 50.02
+    },
+    {
+     "wort": "kommt",
+     "zeit": 50.43
+    },
+    {
+     "wort": "das",
+     "zeit": 50.84
+    },
+    {
+     "wort": "Einarbeitungsgespräch.",
+     "zeit": 51.26
+    },
+    {
+     "wort": "Ein",
+     "zeit": 51.87
+    },
+    {
+     "wort": "einziger",
+     "zeit": 52.29
+    },
+    {
+     "wort": "Prompt,",
+     "zeit": 52.7
+    },
+    {
+     "wort": "und",
+     "zeit": 53.11
+    },
+    {
+     "wort": "Claude",
+     "zeit": 53.53
+    },
+    {
+     "wort": "fragt",
+     "zeit": 53.94
+    },
+    {
+     "wort": "dich",
+     "zeit": 54.36
+    },
+    {
+     "wort": "aus.",
+     "zeit": 54.77
+    }
+   ],
    "visuals": [
     {
      "zeit": 51.26,
@@ -263,6 +773,68 @@
    "ende": 62.14,
    "sprech": "Eine Frage nach der anderen. Was du machst, wie du schreibst, was diese Woche zählt.",
    "text": null,
+   "woerter": [
+    {
+     "wort": "Eine",
+     "zeit": 55.53
+    },
+    {
+     "wort": "Frage",
+     "zeit": 55.95
+    },
+    {
+     "wort": "nach",
+     "zeit": 56.36
+    },
+    {
+     "wort": "der",
+     "zeit": 56.77
+    },
+    {
+     "wort": "anderen.",
+     "zeit": 57.19
+    },
+    {
+     "wort": "Was",
+     "zeit": 57.8
+    },
+    {
+     "wort": "du",
+     "zeit": 58.22
+    },
+    {
+     "wort": "machst,",
+     "zeit": 58.63
+    },
+    {
+     "wort": "wie",
+     "zeit": 59.04
+    },
+    {
+     "wort": "du",
+     "zeit": 59.46
+    },
+    {
+     "wort": "schreibst,",
+     "zeit": 59.87
+    },
+    {
+     "wort": "was",
+     "zeit": 60.28
+    },
+    {
+     "wort": "diese",
+     "zeit": 60.7
+    },
+    {
+     "wort": "Woche",
+     "zeit": 61.11
+    },
+    {
+     "wort": "zählt.",
+     "zeit": 61.53
+    }
+   ],
    "visuals": [
     {
      "zeit": 55.95,
@@ -291,6 +863,60 @@
    "ende": 68.07,
    "sprech": "Eine Grenze hat das Ganze. Legal findet Risiken, ist aber nicht dein Anwalt.",
    "text": "Kein Anwalt",
+   "woerter": [
+    {
+     "wort": "Eine",
+     "zeit": 62.29
+    },
+    {
+     "wort": "Grenze",
+     "zeit": 62.7
+    },
+    {
+     "wort": "hat",
+     "zeit": 63.12
+    },
+    {
+     "wort": "das",
+     "zeit": 63.53
+    },
+    {
+     "wort": "Ganze.",
+     "zeit": 63.94
+    },
+    {
+     "wort": "Legal",
+     "zeit": 64.56
+    },
+    {
+     "wort": "findet",
+     "zeit": 64.97
+    },
+    {
+     "wort": "Risiken,",
+     "zeit": 65.39
+    },
+    {
+     "wort": "ist",
+     "zeit": 65.8
+    },
+    {
+     "wort": "aber",
+     "zeit": 66.21
+    },
+    {
+     "wort": "nicht",
+     "zeit": 66.63
+    },
+    {
+     "wort": "dein",
+     "zeit": 67.04
+    },
+    {
+     "wort": "Anwalt.",
+     "zeit": 67.46
+    }
+   ],
    "visuals": [
     {
      "zeit": 65.39,
@@ -313,6 +939,56 @@
    "ende": 73.58,
    "sprech": "Fünf Plugins, zwei Minuten, ein Prompt. Aus dem Chatbot wird ein Kollege.",
    "text": "5 · 2 · 1",
+   "woerter": [
+    {
+     "wort": "Fünf",
+     "zeit": 68.22
+    },
+    {
+     "wort": "Plugins,",
+     "zeit": 68.63
+    },
+    {
+     "wort": "zwei",
+     "zeit": 69.05
+    },
+    {
+     "wort": "Minuten,",
+     "zeit": 69.46
+    },
+    {
+     "wort": "ein",
+     "zeit": 69.87
+    },
+    {
+     "wort": "Prompt.",
+     "zeit": 70.29
+    },
+    {
+     "wort": "Aus",
+     "zeit": 70.9
+    },
+    {
+     "wort": "dem",
+     "zeit": 71.32
+    },
+    {
+     "wort": "Chatbot",
+     "zeit": 71.73
+    },
+    {
+     "wort": "wird",
+     "zeit": 72.14
+    },
+    {
+     "wort": "ein",
+     "zeit": 72.56
+    },
+    {
+     "wort": "Kollege.",
+     "zeit": 72.97
+    }
+   ],
    "visuals": [
     {
      "zeit": 68.22,
@@ -335,6 +1011,64 @@
    "ende": 79.93,
    "sprech": "Speicher dir das. Und installier die Plugins, bevor du Claude das nächste Mal nutzt.",
    "text": "Speichern",
+   "woerter": [
+    {
+     "wort": "Speicher",
+     "zeit": 73.73
+    },
+    {
+     "wort": "dir",
+     "zeit": 74.15
+    },
+    {
+     "wort": "das.",
+     "zeit": 74.56
+    },
+    {
+     "wort": "Und",
+     "zeit": 75.18
+    },
+    {
+     "wort": "installier",
+     "zeit": 75.59
+    },
+    {
+     "wort": "die",
+     "zeit": 76.0
+    },
+    {
+     "wort": "Plugins,",
+     "zeit": 76.42
+    },
+    {
+     "wort": "bevor",
+     "zeit": 76.83
+    },
+    {
+     "wort": "du",
+     "zeit": 77.24
+    },
+    {
+     "wort": "Claude",
+     "zeit": 77.66
+    },
+    {
+     "wort": "das",
+     "zeit": 78.07
+    },
+    {
+     "wort": "nächste",
+     "zeit": 78.49
+    },
+    {
+     "wort": "Mal",
+     "zeit": 78.9
+    },
+    {
+     "wort": "nutzt.",
+     "zeit": 79.31
+    }
+   ],
    "visuals": [
     {
      "zeit": 73.73,

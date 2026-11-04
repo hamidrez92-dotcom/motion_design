@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="de" data-composition-variables='[
+  {"id":"hookA","type":"string","label":"Hook Zeile 1","default":"Erst die Plugins.","group":"Text"},
+  {"id":"hookB","type":"string","label":"Hook Zeile 2","default":"Dann Claude.","group":"Text"},
+  {"id":"accent","type":"color","label":"Akzent (Claude-Spark)","default":"#D97757","group":"Farbe"},
+  {"id":"paper","type":"color","label":"Grund","default":"#faf9f5","group":"Farbe"},
+  {"id":"paper2","type":"color","label":"Grund 2","default":"#f0eee6","group":"Farbe"},
+  {"id":"ink","type":"color","label":"Schrift","default":"#141413","group":"Farbe"},
+  {"id":"muted","type":"color","label":"Schrift leise","default":"#5e5d59","group":"Farbe"},
+  {"id":"capSize","type":"number","label":"Untertitel-Größe","default":58,"min":36,"max":80,"step":1,"group":"Untertitel"},
+  {"id":"endHold","type":"number","label":"Schluss-Halten (s)","default":0.6,"min":0,"max":5,"step":0.1,"group":"Rhythmus"}
+]'>
+<head>
+<meta charset="utf-8">
+<title>5 Claude-Plugins · huashu-motion</title>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/om.js"></script>
+<style id="om-fonts">
+@font-face { font-family: "Inter"; src: url("assets/fonts/Inter-var.woff") format("woff"); font-weight: 100 900; font-style: normal; }
+@font-face { font-family: "EB Garamond"; src: url("assets/fonts/EBGaramond-400i.woff") format("woff"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "EB Garamond"; src: url("assets/fonts/EBGaramond-400.woff") format("woff"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "EB Garamond"; src: url("assets/fonts/EBGaramond-600.woff") format("woff"); font-weight: 600; font-style: normal; }
+</style>
+<style>
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+  #film { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--paper); color: var(--ink);
+          font-family: "Inter", sans-serif; font-weight: 500; }
+  .scene { position: absolute; inset: 0; visibility: hidden; transform-origin: 465px 760px; }
+  .abs { position: absolute; }
+  .serif { font-family: "EB Garamond", serif; font-weight: 600; letter-spacing: -0.02em; }
+  .it { font-family: "EB Garamond", serif; font-style: italic; font-weight: 400; }
+  .center { left: 80px; width: 770px; text-align: center; }
+  .accent { color: var(--accent); }
+  .muted { color: var(--muted); }
+
+  /* plugin dock: the spine of the film */
+  #dock { position: absolute; left: 80px; top: 236px; width: 770px; display: flex; gap: 10px; justify-content: center; }
+  .chip { font-size: 23px; font-weight: 600; padding: 11px 15px; border-radius: 999px; background: var(--paper2);
+          color: var(--muted); border: 2px solid transparent; white-space: nowrap; }
+  .chip.on { background: var(--ink); color: var(--paper); }
+
+  /* plugin card */
+  .card { position: absolute; width: 420px; height: 210px; margin: -105px 0 0 -210px; border-radius: 28px; background: #fff;
+          box-shadow: 0 2px 0 #e8e6dc, 0 24px 60px -20px #14141333; padding: 30px 34px; box-sizing: border-box; }
+  .card .nm { font-family: "EB Garamond", serif; font-weight: 600; font-size: 64px; line-height: 1; letter-spacing: -0.02em; }
+  .card .by { margin-top: 18px; font-size: 24px; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+  .card .by img { width: 26px; height: 26px; }
+  .card .plus { position: absolute; right: 26px; top: 26px; width: 54px; height: 54px; border-radius: 50%; background: var(--paper2);
+                font-size: 38px; line-height: 52px; text-align: center; color: var(--ink); }
+
+  /* chat */
+  .bubble { position: absolute; max-width: 620px; font-size: 38px; line-height: 1.3; padding: 24px 30px; border-radius: 30px; box-sizing: border-box; }
+  .bubble.me { right: 230px; background: var(--paper2); border-bottom-right-radius: 8px; }
+  .bubble.ai { left: 80px; background: #fff; box-shadow: 0 1px 0 #e8e6dc, 0 18px 40px -22px #14141333; border-bottom-left-radius: 8px; }
+  .bubble.ai img { width: 40px; height: 40px; vertical-align: -8px; margin-right: 12px; }
+
+  /* badge */
+  .badge { position: absolute; left: 225px; top: 470px; width: 480px; height: 640px; border-radius: 34px; background: #fff;
+           box-shadow: 0 2px 0 #e8e6dc, 0 40px 80px -30px #14141344; text-align: center; box-sizing: border-box; padding-top: 70px; }
+  .badge .clip { position: absolute; left: 190px; top: -26px; width: 100px; height: 52px; border-radius: 14px; background: var(--paper2); border: 3px solid #e8e6dc; }
+  .badge .photo { width: 210px; height: 210px; margin: 0 auto; border-radius: 50%; background: var(--paper2); display: flex; align-items: center; justify-content: center; }
+  .badge .photo img { width: 130px; }
+  .badge .tag { margin-top: 44px; font-size: 26px; letter-spacing: .2em; font-weight: 700; color: var(--accent); }
+  .badge .who { margin-top: 10px; font-family: "EB Garamond", serif; font-weight: 600; font-size: 88px; letter-spacing: -0.02em; }
+  .badge .day { margin-top: 6px; font-size: 28px; color: var(--muted); }
+
+  .folder { position: absolute; width: 420px; height: 300px; border-radius: 10px 26px 26px 26px; background: var(--accent); color: var(--paper);
+            box-shadow: 0 30px 60px -24px #14141366; }
+  .folder::before { content: ""; position: absolute; left: 0; top: -34px; width: 170px; height: 40px; border-radius: 18px 18px 0 0; background: var(--accent); }
+  .folder .lbl { position: absolute; left: 34px; bottom: 30px; font-family: "EB Garamond", serif; font-weight: 600; font-size: 60px; }
+  .folder .sub { position: absolute; left: 36px; top: 30px; font-size: 22px; letter-spacing: .18em; font-weight: 700; opacity: .85; }
+
+  /* generic pieces */
+  .sheet { position: absolute; width: 330px; height: 92px; border-radius: 18px; background: #fff; box-shadow: 0 1px 0 #e8e6dc, 0 14px 30px -18px #14141344;
+           font-size: 29px; font-weight: 600; line-height: 92px; padding-left: 30px; box-sizing: border-box; }
+  .sheet::before { content: ""; display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: var(--accent); margin-right: 16px; vertical-align: 2px; }
+  .node { position: absolute; width: 150px; height: 150px; border-radius: 40px; background: #fff; box-shadow: 0 1px 0 #e8e6dc, 0 14px 30px -18px #14141344;
+          font-size: 25px; font-weight: 600; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .node svg { width: 52px; height: 52px; }
+  .pill { position: absolute; font-size: 40px; font-weight: 600; padding: 20px 34px; border-radius: 999px; background: #fff;
+          box-shadow: 0 1px 0 #e8e6dc, 0 14px 30px -18px #14141344; white-space: nowrap; }
+  .pill.on { background: var(--ink); color: var(--paper); }
+
+  .big { font-size: 150px; line-height: .95; }
+  .kick { font-size: 30px; letter-spacing: .2em; font-weight: 700; color: var(--accent); }
+
+  /* captions */
+  #cap { position: absolute; left: 80px; width: 770px; top: 1250px; height: 180px; color: var(--ink); }
+  .chunk { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font-weight: 700; letter-spacing: -0.01em; line-height: 1.18; visibility: hidden; }
+  .w { display: inline-block; margin: 0 .12em; }
+  .w[data-on="1"] { color: var(--accent); }
+
+  #cursor { position: absolute; left: 0; top: 0; width: 54px; z-index: 30; visibility: hidden; }
+  .grid { position: absolute; display: grid; gap: 10px; }
+  .cell { width: 92px; height: 92px; border-radius: 16px; background: var(--paper2); position: relative; }
+  .cell i { position: absolute; left: 34px; top: 34px; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); transform: scale(0); }
+  .row { position: absolute; left: 140px; height: 74px; border-radius: 16px; font-size: 30px; font-weight: 600; line-height: 74px; padding-left: 26px; box-sizing: border-box; color: var(--ink); }
+  .doc { position: absolute; left: 165px; top: 560px; width: 600px; height: 620px; background: #fff; border-radius: 22px;
+         box-shadow: 0 1px 0 #e8e6dc, 0 30px 60px -28px #14141355; }
+  .ln { position: absolute; left: 50px; height: 16px; border-radius: 8px; background: #e8e6dc; }
+  .hl { position: absolute; left: 34px; height: 50px; border-radius: 12px; transform-origin: 0 50%; }
+  .rk { position: absolute; right: -70px; font-size: 25px; font-weight: 700; padding: 8px 16px; border-radius: 999px; color: var(--ink); }
+  .note { position: absolute; width: 270px; padding: 22px 24px; font-size: 32px; font-weight: 700; line-height: 1.15; background: #f6e2a8; color: var(--ink);
+          box-shadow: 0 18px 30px -18px #14141366; }
+  .box { width: 84px; height: 84px; border-radius: 18px; border: 5px solid var(--ink); box-sizing: border-box; display: inline-block; }
+</style>
+</head>
+<body>
+<!--
+  Ein Reel aus projekte/claude-plugins/skript/skript.json (eingebettet unten, per tools/inject.py).
+  Szenen = Beats des Skripts (scene:b01 … scene:b15). Zeiten kommen aus dem Skript, nicht aus dieser Datei:
+  nach einer neuen Fassung oder mit echten Wortzeiten nur `python3 tools/inject.py` laufen lassen.
+-->
+<div id="film" data-composition-id="film" data-width="1080" data-height="1920">
+
+  <!-- B01 HOOK -->
+  <section class="scene" id="s01" data-om-id="hook" style="visibility:visible">
+    <div class="abs center serif" style="top:330px; font-size:118px; line-height:1.02" data-om-id="hook-title">
+      <div id="hookA" data-var-text="hookA">Erst die Plugins.</div>
+      <div id="hookB"><span data-var-text="hookB">Dann Claude.</span></div>
+    </div>
+    <div id="fan"></div>
+  </section>
+
+  <!-- B02 KONTEXT -->
+  <section class="scene" id="s02" data-om-id="kontext">
+    <div class="bubble me" id="q1" style="top:440px">Kannst du mir helfen?</div>
+    <div class="bubble ai" id="a1" style="top:590px"><img src="assets/claude-spark.svg" alt="">Klar. Was brauchst du?</div>
+    <div class="abs center serif" id="vsA" style="top:830px; font-size:96px">Chatbot</div>
+    <div class="abs center" id="vsArrow" style="top:960px; font-size:70px; color:var(--accent)">↓</div>
+    <div class="abs center serif" id="vsB" style="top:1060px; font-size:96px">Mitarbeiter</div>
+  </section>
+
+  <!-- B03 / B11 / B14 badge world -->
+  <section class="scene" id="s03" data-om-id="kollege">
+    <div class="badge" id="badge" data-om-id="badge">
+      <div class="clip"></div>
+      <div class="photo"><img src="assets/claude-spark.svg" alt="Claude"></div>
+      <div class="tag">NEU IM TEAM</div>
+      <div class="who">Claude</div>
+      <div class="day" id="badgeDay">Erster Arbeitstag</div>
+    </div>
+    <div id="folders"></div>
+    <div class="abs center kick" id="s03kick" style="top:1170px">EINARBEITUNGSMAPPE</div>
+  </section>
+
+  <!-- B04 plugin = skills + connectors -->
+  <section class="scene" id="s04" data-om-id="plugin">
+    <div class="abs center serif" id="eq" style="top:340px; font-size:84px; line-height:1.05">Plugin =<br><span class="accent">Skills</span> + <span class="accent">Connectors</span></div>
+    <div class="abs kick" style="left:110px; top:590px" id="skK">SKILLS · ANLEITUNGEN</div>
+    <div class="sheet" id="sk1" style="left:100px; top:650px">Kampagnenplan</div>
+    <div class="sheet" id="sk2" style="left:100px; top:762px">E-Mail-Sequenz</div>
+    <div class="sheet" id="sk3" style="left:100px; top:874px">SEO-Audit</div>
+    <div class="abs kick" style="left:560px; top:590px" id="cnK">CONNECTORS</div>
+    <svg class="abs" id="wires" style="left:430px; top:640px" width="140" height="400" viewBox="0 0 140 400">
+      <path d="M0 200 C70 200 70 60 140 60" fill="none" stroke="#D97757" stroke-width="5" stroke-dasharray="200" stroke-dashoffset="200"/>
+      <path d="M0 200 L140 200" fill="none" stroke="#D97757" stroke-width="5" stroke-dasharray="200" stroke-dashoffset="200"/>
+      <path d="M0 200 C70 200 70 340 140 340" fill="none" stroke="#D97757" stroke-width="5" stroke-dasharray="200" stroke-dashoffset="200"/>
+    </svg>
+    <div class="node" id="cn1" style="left:600px; top:625px"><svg viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>E-Mail</div>
+    <div class="node" id="cn2" style="left:600px; top:765px"><svg viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalender</div>
+    <div class="node" id="cn3" style="left:600px; top:905px"><svg viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.8"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat</div>
+    <div class="abs center serif" id="oneJob" style="top:1080px; font-size:76px">Ein Plugin. <span class="it accent">Ein Job.</span></div>
+  </section>
+
+  <!-- B05–B09 the five -->
+  <section class="scene" id="s05" data-om-id="plugin-header">
+    <div class="abs center kick" id="pKick" style="top:370px">PLUGIN · BY ANTHROPIC</div>
+    <div class="abs center serif big" id="pName" style="top:420px" data-om-id="plugin-name">Marketing</div>
+  </section>
+
+  <section class="scene" id="v05" data-om-id="marketing">
+    <div class="grid" id="cal" style="left:110px; top:640px; grid-template-columns: repeat(7, 92px)"></div>
+    <div class="abs center it" id="voice" style="top:1110px; font-size:56px">in deiner Markenstimme</div>
+  </section>
+
+  <section class="scene" id="v06" data-om-id="finance">
+    <div class="abs kick" style="left:140px; top:620px">DEINE TABELLE</div>
+    <div class="row" id="r1" style="top:680px; width:520px; background:var(--paper2)">Einnahmen</div>
+    <div class="row" id="r2" style="top:770px; width:380px; background:var(--paper2)">Kosten</div>
+    <div class="row" id="r3" style="top:860px; width:250px; background:var(--accent); color:var(--paper)">Ergebnis</div>
+    <div class="abs center serif" id="guv" style="top:1000px; font-size:64px; line-height:1.05">Gewinn- und<br>Verlustrechnung</div>
+  </section>
+
+  <section class="scene" id="v07" data-om-id="legal">
+    <div class="doc" id="doc7"></div>
+  </section>
+
+  <section class="scene" id="v08" data-om-id="design">
+    <div class="doc" id="site" style="top:600px; height:560px; left:150px; width:560px">
+      <div class="abs" style="left:0; right:0; top:0; height:56px; border-radius:22px 22px 0 0; background:var(--paper2)"></div>
+      <div class="abs" style="left:24px; top:20px; width:16px; height:16px; border-radius:50%; background:#dedcd1; box-shadow:26px 0 0 #dedcd1, 52px 0 0 #dedcd1"></div>
+      <div class="abs" style="left:44px; top:100px; width:470px; height:190px; border-radius:16px; background:linear-gradient(135deg,#c9c3f5,#f3c4d9)"></div>
+      <div class="abs" style="left:44px; top:320px; width:300px; height:22px; border-radius:8px; background:#e8e6dc"></div>
+      <div class="abs" style="left:44px; top:360px; width:400px; height:16px; border-radius:8px; background:#efeee9"></div>
+      <div class="abs" style="left:44px; top:390px; width:360px; height:16px; border-radius:8px; background:#efeee9"></div>
+      <div class="abs" style="left:44px; top:450px; width:170px; height:60px; border-radius:30px; background:#c9c3f5"></div>
+    </div>
+    <div class="note" id="n1" style="left:520px; top:640px; transform:rotate(4deg)">wirkt generisch</div>
+    <div class="note" id="n2" style="left:110px; top:1000px; transform:rotate(-3deg)">schwer lesbar</div>
+  </section>
+
+  <section class="scene" id="v09" data-om-id="productivity">
+    <div id="todo" class="abs" style="left:130px; top:640px"></div>
+    <div class="pill" id="pp1" style="left:560px; top:660px; font-size:30px">Personen</div>
+    <div class="pill" id="pp2" style="left:560px; top:760px; font-size:30px">Projekte</div>
+    <div class="abs it" id="mem" style="left:560px; top:860px; font-size:44px; color:var(--muted)">Gedächtnis</div>
+  </section>
+
+  <!-- B10 install -->
+  <section class="scene" id="s10" data-om-id="install">
+    <div class="abs center serif" style="top:380px; font-size:240px; line-height:1" id="min"><span id="minN">0</span><span style="font-size:110px"> Min</span></div>
+    <div class="abs center" id="paid" style="top:640px; font-size:32px; color:var(--muted)">ca. · nur mit bezahltem Claude-Plan</div>
+    <div class="pill" id="st1" style="left:80px;  top:800px">Customize</div>
+    <div class="abs" id="ar1" style="left:330px; top:812px; font-size:44px; color:var(--muted)">›</div>
+    <div class="pill" id="st2" style="left:370px; top:800px">Plugins</div>
+    <div class="abs" id="ar2" style="left:575px; top:812px; font-size:44px; color:var(--muted)">›</div>
+    <div class="pill" id="st3" style="left:610px; top:800px">Discover</div>
+    <div id="results"></div>
+  </section>
+
+  <!-- B11/B12 setup chat -->
+  <section class="scene" id="s12" data-om-id="setup">
+    <div class="bubble me" id="sp" style="top:420px; right:230px; font-size:33px; max-width:640px">Ich habe gerade deine Plugins Marketing, Finance, Legal, Design und Productivity installiert. Richte sie für mich ein.</div>
+    <div class="bubble ai" id="f1" style="top:720px; font-size:36px"><img src="assets/claude-spark.svg" alt="">Was machst du, und für wen?</div>
+    <div class="bubble ai" id="f2" style="top:850px; font-size:36px"><img src="assets/claude-spark.svg" alt="">Schick mir einen Text von dir.</div>
+    <div class="abs" id="prio" style="left:80px; top:990px; width:770px; display:flex; gap:30px; align-items:center; font-size:30px; font-weight:600">
+      <span class="box"></span><span class="box"></span><span class="box"></span><span>deine 3 Prioritäten<br>dieser Woche</span>
+    </div>
+  </section>
+
+  <!-- B13 Wende (dark) -->
+  <section class="scene" id="s13" data-om-id="wende">
+    <div class="abs center kick" id="wk" style="top:360px">EINE GRENZE</div>
+    <div class="doc" id="doc13" style="top:450px; height:520px; left:180px; width:560px"></div>
+    <div class="abs center serif" id="anwalt" style="top:1010px; font-size:86px; color:var(--paper); line-height:1.02">Kein <span class="accent">Anwalt.</span></div>
+    <div class="abs center" id="anwalt2" style="top:1120px; font-size:32px; color:#dedcd1">Bei großen Verträgen: Anwalt fragen.</div>
+  </section>
+
+  <!-- B14 Payoff -->
+  <section class="scene" id="s14" data-om-id="payoff">
+    <div class="abs serif" id="n5" style="left:110px; top:360px; font-size:230px; line-height:1">5</div>
+    <div class="abs" id="n5l" style="left:240px; top:440px; font-size:44px; font-weight:600">Plugins</div>
+    <div class="abs serif" id="n2" style="left:330px; top:600px; font-size:230px; line-height:1">2</div>
+    <div class="abs" id="n2l" style="left:460px; top:680px; font-size:44px; font-weight:600">Minuten</div>
+    <div class="abs serif accent" id="n1x" style="left:540px; top:840px; font-size:230px; line-height:1">1</div>
+    <div class="abs" id="n1l" style="left:650px; top:920px; font-size:44px; font-weight:600">Prompt</div>
+  </section>
+
+  <!-- B15 CTA -->
+  <section class="scene" id="s15" data-om-id="cta">
+    <svg class="abs" id="bm" style="left:345px; top:420px" width="240" height="300" viewBox="0 0 24 30"><path d="M3 2h18v26l-9-7-9 7z" fill="none" stroke="#141413" stroke-width="2.2" stroke-linejoin="round"/></svg>
+    <div class="abs center serif" id="save" style="top:780px; font-size:110px">Speichern.</div>
+  </section>
+
+  <div id="dock" data-om-id="dock"></div>
+  <div id="cap" data-om-id="untertitel"></div>
+  <svg id="cursor" viewBox="0 0 24 24"><path d="M4 2l15 11-7 1.2L8.2 21z" fill="#141413" stroke="#faf9f5" stroke-width="1.4" stroke-linejoin="round"/></svg>
+</div>
+
+<script type="application/json" id="skript">{"titel": "5 Claude-Plugins, die du zuerst installierst", "quelle": "../quelle/artikel.md", "zeiten": "geschätzt", "wpm": 145.0, "dauer": 79.93, "format": {"breite": 1080, "hoehe": 1920, "safe_zone": {"oben": 230, "unten": 1440, "rechts": 230}}, "beats": [{"id": "B01", "rolle": "HOOK", "start": 0.0, "ende": 3.51, "sprech": "Installier diese fünf Plugins, bevor du Claude nutzt.", "text": "Erst die Plugins. Dann Claude.", "woerter": [{"wort": "Installier", "zeit": 0.0}, {"wort": "diese", "zeit": 0.41}, {"wort": "fünf", "zeit": 0.83}, {"wort": "Plugins,", "zeit": 1.24}, {"wort": "bevor", "zeit": 1.66}, {"wort": "du", "zeit": 2.07}, {"wort": "Claude", "zeit": 2.48}, {"wort": "nutzt.", "zeit": 2.9}], "visuals": [{"zeit": 1.24, "anker": "Plugins", "typ": "ui", "beschreibung": "Das Claude-Chatfenster, davor fünf Plugin-Karten mit den echten Namen Marketing, Finance, Legal, Design, Productivity, jede mit „by Anthropic“ darunter."}]}, {"id": "B02", "rolle": "KONTEXT", "start": 3.66, "ende": 9.44, "sprech": "Ohne Plugins ist Claude ein Chatbot. Mit Plugins arbeitet Claude wie ein Mitarbeiter.", "text": "Chatbot → Mitarbeiter", "woerter": [{"wort": "Ohne", "zeit": 3.66}, {"wort": "Plugins", "zeit": 4.07}, {"wort": "ist", "zeit": 4.49}, {"wort": "Claude", "zeit": 4.9}, {"wort": "ein", "zeit": 5.32}, {"wort": "Chatbot.", "zeit": 5.73}, {"wort": "Mit", "zeit": 6.34}, {"wort": "Plugins", "zeit": 6.76}, {"wort": "arbeitet", "zeit": 7.17}, {"wort": "Claude", "zeit": 7.58}, {"wort": "wie", "zeit": 8.0}, {"wort": "ein", "zeit": 8.41}, {"wort": "Mitarbeiter.", "zeit": 8.83}], "visuals": [{"zeit": 5.73, "anker": "Chatbot", "typ": "chat", "beschreibung": "Ein einfacher Chatverlauf: eine Frage, eine Antwort. Mehr passiert nicht."}, {"zeit": 8.83, "anker": "Mitarbeiter", "typ": "vergleich", "beschreibung": "Links „Chatbot“, rechts „Mitarbeiter“, der Pfeil dazwischen ist das Plugin."}]}, {"id": "B03", "rolle": "PUNKT", "start": 9.59, "ende": 16.2, "sprech": "Stell dir einen neuen Kollegen vor. Am ersten Tag bekommt er die Einarbeitungsmappe seiner Abteilung.", "text": null, "woerter": [{"wort": "Stell", "zeit": 9.59}, {"wort": "dir", "zeit": 10.0}, {"wort": "einen", "zeit": 10.42}, {"wort": "neuen", "zeit": 10.83}, {"wort": "Kollegen", "zeit": 11.24}, {"wort": "vor.", "zeit": 11.66}, {"wort": "Am", "zeit": 12.27}, {"wort": "ersten", "zeit": 12.69}, {"wort": "Tag", "zeit": 13.1}, {"wort": "bekommt", "zeit": 13.51}, {"wort": "er", "zeit": 13.93}, {"wort": "die", "zeit": 14.34}, {"wort": "Einarbeitungsmappe", "zeit": 14.76}, {"wort": "seiner", "zeit": 15.17}, {"wort": "Abteilung.", "zeit": 15.58}], "visuals": [{"zeit": 11.24, "anker": "Kollegen", "typ": "metapher", "beschreibung": "Ein neuer Kollege an einem leeren Schreibtisch."}, {"zeit": 14.76, "anker": "Einarbeitungsmappe", "typ": "metapher", "beschreibung": "Ihm wird eine dicke Mappe mit der Aufschrift „Marketing“ übergeben."}]}, {"id": "B04", "rolle": "PUNKT", "start": 16.35, "ende": 22.95, "sprech": "Genau das ist ein Plugin. Skills und Verbindungen zu deinen Tools, gebündelt für einen Job.", "text": "Plugin = Skills + Connectors", "woerter": [{"wort": "Genau", "zeit": 16.35}, {"wort": "das", "zeit": 16.76}, {"wort": "ist", "zeit": 17.17}, {"wort": "ein", "zeit": 17.59}, {"wort": "Plugin.", "zeit": 18.0}, {"wort": "Skills", "zeit": 18.62}, {"wort": "und", "zeit": 19.03}, {"wort": "Verbindungen", "zeit": 19.44}, {"wort": "zu", "zeit": 19.86}, {"wort": "deinen", "zeit": 20.27}, {"wort": "Tools,", "zeit": 20.68}, {"wort": "gebündelt", "zeit": 21.1}, {"wort": "für", "zeit": 21.51}, {"wort": "einen", "zeit": 21.93}, {"wort": "Job.", "zeit": 22.34}], "visuals": [{"zeit": 18.0, "anker": "Plugin", "typ": "diagramm", "beschreibung": "Die Mappe öffnet sich als Plugin: darin Skills, also Anleitungen, und Connectors, also Kabel zu Tools wie E-Mail und Kalender."}, {"zeit": 22.34, "anker": "Job", "typ": "text", "beschreibung": "„Ein Plugin, ein Job.“"}]}, {"id": "B05", "rolle": "PUNKT", "start": 23.1, "ende": 26.61, "sprech": "Marketing plant Kampagnen und Posts in deiner Markenstimme.", "text": "Marketing", "woerter": [{"wort": "Marketing", "zeit": 23.1}, {"wort": "plant", "zeit": 23.52}, {"wort": "Kampagnen", "zeit": 23.93}, {"wort": "und", "zeit": 24.34}, {"wort": "Posts", "zeit": 24.76}, {"wort": "in", "zeit": 25.17}, {"wort": "deiner", "zeit": 25.59}, {"wort": "Markenstimme.", "zeit": 26.0}], "visuals": [{"zeit": 23.1, "anker": "Marketing", "typ": "ui", "beschreibung": "Plugin-Karte Marketing wird aktiv."}, {"zeit": 23.93, "anker": "Kampagnen", "typ": "liste", "beschreibung": "Ein 30-Tage-Kalender mit Posts, darüber „in deiner Markenstimme“."}]}, {"id": "B06", "rolle": "PUNKT", "start": 26.76, "ende": 30.69, "sprech": "Finance macht aus deiner Tabelle eine Gewinn- und Verlustrechnung.", "text": "Finance", "woerter": [{"wort": "Finance", "zeit": 26.76}, {"wort": "macht", "zeit": 27.18}, {"wort": "aus", "zeit": 27.59}, {"wort": "deiner", "zeit": 28.01}, {"wort": "Tabelle", "zeit": 28.42}, {"wort": "eine", "zeit": 28.83}, {"wort": "Gewinn-", "zeit": 29.25}, {"wort": "und", "zeit": 29.66}, {"wort": "Verlustrechnung.", "zeit": 30.07}], "visuals": [{"zeit": 26.76, "anker": "Finance", "typ": "ui", "beschreibung": "Plugin-Karte Finance wird aktiv."}, {"zeit": 28.42, "anker": "Tabelle", "typ": "diagramm", "beschreibung": "Eine Tabelle mit Einnahmen und Kosten wird zu einer sauberen Gewinn- und Verlustrechnung."}]}, {"id": "B07", "rolle": "PUNKT", "start": 30.84, "ende": 33.93, "sprech": "Legal markiert riskante Klauseln, bevor du unterschreibst.", "text": "Legal", "woerter": [{"wort": "Legal", "zeit": 30.84}, {"wort": "markiert", "zeit": 31.25}, {"wort": "riskante", "zeit": 31.67}, {"wort": "Klauseln,", "zeit": 32.08}, {"wort": "bevor", "zeit": 32.49}, {"wort": "du", "zeit": 32.91}, {"wort": "unterschreibst.", "zeit": 33.32}], "visuals": [{"zeit": 30.84, "anker": "Legal", "typ": "ui", "beschreibung": "Plugin-Karte Legal wird aktiv."}, {"zeit": 32.08, "anker": "Klauseln", "typ": "screenshot", "beschreibung": "Ein Vertrag, drei Klauseln markiert mit niedrig, mittel und hoch."}]}, {"id": "B08", "rolle": "PUNKT", "start": 34.08, "ende": 38.84, "sprech": "Design sagt dir ehrlich, was an deiner Seite nach KI aussieht.", "text": "Design", "woerter": [{"wort": "Design", "zeit": 34.08}, {"wort": "sagt", "zeit": 34.5}, {"wort": "dir", "zeit": 34.91}, {"wort": "ehrlich,", "zeit": 35.33}, {"wort": "was", "zeit": 35.74}, {"wort": "an", "zeit": 36.15}, {"wort": "deiner", "zeit": 36.57}, {"wort": "Seite", "zeit": 36.98}, {"wort": "nach", "zeit": 37.39}, {"wort": "KI", "zeit": 37.81}, {"wort": "aussieht.", "zeit": 38.22}], "visuals": [{"zeit": 34.08, "anker": "Design", "typ": "ui", "beschreibung": "Plugin-Karte Design wird aktiv."}, {"zeit": 37.81, "anker": "KI", "typ": "screenshot", "beschreibung": "Eine Website mit Anmerkungen: „wirkt generisch“, „schwer lesbar“."}]}, {"id": "B09", "rolle": "PUNKT", "start": 38.99, "ende": 43.32, "sprech": "Und Productivity führt deine Aufgaben und merkt sich deine Projekte.", "text": "Productivity", "woerter": [{"wort": "Und", "zeit": 38.99}, {"wort": "Productivity", "zeit": 39.4}, {"wort": "führt", "zeit": 39.81}, {"wort": "deine", "zeit": 40.23}, {"wort": "Aufgaben", "zeit": 40.64}, {"wort": "und", "zeit": 41.06}, {"wort": "merkt", "zeit": 41.47}, {"wort": "sich", "zeit": 41.88}, {"wort": "deine", "zeit": 42.3}, {"wort": "Projekte.", "zeit": 42.71}], "visuals": [{"zeit": 39.4, "anker": "Productivity", "typ": "ui", "beschreibung": "Plugin-Karte Productivity wird aktiv."}, {"zeit": 40.64, "anker": "Aufgaben", "typ": "liste", "beschreibung": "Eine Aufgabenliste mit Häkchen, daneben kleine Kärtchen mit Personen und Projekten als Gedächtnis."}]}, {"id": "B10", "rolle": "PUNKT", "start": 43.47, "ende": 49.87, "sprech": "Installiert in etwa zwei Minuten. Customize, Plugins, Discover. Nimm nur die mit by Anthropic.", "text": "~2 Minuten · bezahlter Plan", "woerter": [{"wort": "Installiert", "zeit": 43.47}, {"wort": "in", "zeit": 43.89}, {"wort": "etwa", "zeit": 44.3}, {"wort": "zwei", "zeit": 44.72}, {"wort": "Minuten.", "zeit": 45.13}, {"wort": "Customize,", "zeit": 45.74}, {"wort": "Plugins,", "zeit": 46.16}, {"wort": "Discover.", "zeit": 46.57}, {"wort": "Nimm", "zeit": 47.18}, {"wort": "nur", "zeit": 47.6}, {"wort": "die", "zeit": 48.01}, {"wort": "mit", "zeit": 48.43}, {"wort": "by", "zeit": 48.84}, {"wort": "Anthropic.", "zeit": 49.25}], "visuals": [{"zeit": 44.72, "anker": "zwei", "typ": "zahl", "beschreibung": "Ein Zähler bei rund zwei Minuten, darunter klein „nur mit bezahltem Plan“."}, {"zeit": 45.74, "anker": "Customize", "typ": "ui", "beschreibung": "Die linke Seitenleiste von Claude: „Customize“, dann der Tab „Plugins“, dann „Discover“."}, {"zeit": 49.25, "anker": "Anthropic", "typ": "ui", "beschreibung": "Suchergebnisse mit ähnlichen Namen, nur die Karten mit „by Anthropic“ sind hervorgehoben, ein Klick aufs Plus."}]}, {"id": "B11", "rolle": "PUNKT", "start": 50.02, "ende": 55.38, "sprech": "Dann kommt das Einarbeitungsgespräch. Ein einziger Prompt, und Claude fragt dich aus.", "text": "Ein Prompt", "woerter": [{"wort": "Dann", "zeit": 50.02}, {"wort": "kommt", "zeit": 50.43}, {"wort": "das", "zeit": 50.84}, {"wort": "Einarbeitungsgespräch.", "zeit": 51.26}, {"wort": "Ein", "zeit": 51.87}, {"wort": "einziger", "zeit": 52.29}, {"wort": "Prompt,", "zeit": 52.7}, {"wort": "und", "zeit": 53.11}, {"wort": "Claude", "zeit": 53.53}, {"wort": "fragt", "zeit": 53.94}, {"wort": "dich", "zeit": 54.36}, {"wort": "aus.", "zeit": 54.77}], "visuals": [{"zeit": 51.26, "anker": "Einarbeitungsgespräch", "typ": "metapher", "beschreibung": "Der neue Kollege und du am Tisch, die Mappe liegt dazwischen."}, {"zeit": 52.7, "anker": "Prompt", "typ": "chat", "beschreibung": "Du schickst: „Ich habe gerade deine Plugins Marketing, Finance, Legal, Design und Productivity installiert. Richte sie für mich ein.“"}]}, {"id": "B12", "rolle": "PUNKT", "start": 55.53, "ende": 62.14, "sprech": "Eine Frage nach der anderen. Was du machst, wie du schreibst, was diese Woche zählt.", "text": null, "woerter": [{"wort": "Eine", "zeit": 55.53}, {"wort": "Frage", "zeit": 55.95}, {"wort": "nach", "zeit": 56.36}, {"wort": "der", "zeit": 56.77}, {"wort": "anderen.", "zeit": 57.19}, {"wort": "Was", "zeit": 57.8}, {"wort": "du", "zeit": 58.22}, {"wort": "machst,", "zeit": 58.63}, {"wort": "wie", "zeit": 59.04}, {"wort": "du", "zeit": 59.46}, {"wort": "schreibst,", "zeit": 59.87}, {"wort": "was", "zeit": 60.28}, {"wort": "diese", "zeit": 60.7}, {"wort": "Woche", "zeit": 61.11}, {"wort": "zählt.", "zeit": 61.53}], "visuals": [{"zeit": 55.95, "anker": "Frage", "typ": "chat", "beschreibung": "Claude fragt: „Was machst du, und für wen?“"}, {"zeit": 59.87, "anker": "schreibst", "typ": "chat", "beschreibung": "Claude fragt nach einem Text von dir, für deine Markenstimme."}, {"zeit": 61.11, "anker": "Woche", "typ": "liste", "beschreibung": "Drei leere Kästchen: deine drei Prioritäten dieser Woche."}]}, {"id": "B13", "rolle": "WENDE", "start": 62.29, "ende": 68.07, "sprech": "Eine Grenze hat das Ganze. Legal findet Risiken, ist aber nicht dein Anwalt.", "text": "Kein Anwalt", "woerter": [{"wort": "Eine", "zeit": 62.29}, {"wort": "Grenze", "zeit": 62.7}, {"wort": "hat", "zeit": 63.12}, {"wort": "das", "zeit": 63.53}, {"wort": "Ganze.", "zeit": 63.94}, {"wort": "Legal", "zeit": 64.56}, {"wort": "findet", "zeit": 64.97}, {"wort": "Risiken,", "zeit": 65.39}, {"wort": "ist", "zeit": 65.8}, {"wort": "aber", "zeit": 66.21}, {"wort": "nicht", "zeit": 66.63}, {"wort": "dein", "zeit": 67.04}, {"wort": "Anwalt.", "zeit": 67.46}], "visuals": [{"zeit": 65.39, "anker": "Risiken", "typ": "screenshot", "beschreibung": "Der markierte Vertrag von vorhin."}, {"zeit": 67.46, "anker": "Anwalt", "typ": "text", "beschreibung": "„Claude ist nicht dein Anwalt.“ Daneben: „Bei großen Verträgen: Anwalt fragen.“"}]}, {"id": "B14", "rolle": "PAYOFF", "start": 68.22, "ende": 73.58, "sprech": "Fünf Plugins, zwei Minuten, ein Prompt. Aus dem Chatbot wird ein Kollege.", "text": "5 · 2 · 1", "woerter": [{"wort": "Fünf", "zeit": 68.22}, {"wort": "Plugins,", "zeit": 68.63}, {"wort": "zwei", "zeit": 69.05}, {"wort": "Minuten,", "zeit": 69.46}, {"wort": "ein", "zeit": 69.87}, {"wort": "Prompt.", "zeit": 70.29}, {"wort": "Aus", "zeit": 70.9}, {"wort": "dem", "zeit": 71.32}, {"wort": "Chatbot", "zeit": 71.73}, {"wort": "wird", "zeit": 72.14}, {"wort": "ein", "zeit": 72.56}, {"wort": "Kollege.", "zeit": 72.97}], "visuals": [{"zeit": 68.22, "anker": "Fünf", "typ": "zahl", "beschreibung": "Drei Zahlen nacheinander, jeweils auf dem Wort: 5 Plugins, 2 Minuten, 1 Prompt."}, {"zeit": 72.97, "anker": "Kollege", "typ": "metapher", "beschreibung": "Der Kollege von vorhin, jetzt mit allen fünf Mappen auf dem Tisch."}]}, {"id": "B15", "rolle": "CTA", "start": 73.73, "ende": 79.93, "sprech": "Speicher dir das. Und installier die Plugins, bevor du Claude das nächste Mal nutzt.", "text": "Speichern", "woerter": [{"wort": "Speicher", "zeit": 73.73}, {"wort": "dir", "zeit": 74.15}, {"wort": "das.", "zeit": 74.56}, {"wort": "Und", "zeit": 75.18}, {"wort": "installier", "zeit": 75.59}, {"wort": "die", "zeit": 76.0}, {"wort": "Plugins,", "zeit": 76.42}, {"wort": "bevor", "zeit": 76.83}, {"wort": "du", "zeit": 77.24}, {"wort": "Claude", "zeit": 77.66}, {"wort": "das", "zeit": 78.07}, {"wort": "nächste", "zeit": 78.49}, {"wort": "Mal", "zeit": 78.9}, {"wort": "nutzt.", "zeit": 79.31}], "visuals": [{"zeit": 73.73, "anker": "Speicher", "typ": "icon", "beschreibung": "Das Speichern-Symbol von Instagram."}, {"zeit": 78.49, "anker": "nächste Mal", "typ": "ui", "beschreibung": "Zurück zum Anfang: das Claude-Chatfenster mit den fünf Plugin-Karten davor."}]}]}</script>
+<script>
+  const V = OM.vars();
+  const S = JSON.parse(document.getElementById('skript').textContent);
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => [...document.querySelectorAll(s)];
+  const norm = (w) => w.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+  const B = Object.fromEntries(S.beats.map((b) => [b.id, b]));
+  // time of a visual (by anchor) or of a word in a beat (nth repeat), straight from the script
+  const vt = (id, anker) => { const v = B[id].visuals.find((x) => x.anker === anker); if (!v) throw new Error(`kein Visual @${anker} in ${id}`); return v.zeit; };
+  const wt = (id, word, nth = 0) => { const hit = B[id].woerter.filter((x) => norm(x.wort).startsWith(norm(word))); if (!hit[nth]) throw new Error(`kein Wort ${word} in ${id}`); return hit[nth].zeit; };
+  const st = (id) => B[id].start, en = (id) => B[id].ende;
+  const END = S.dauer + V.endHold;
+
+  const PLUGINS = ['Marketing', 'Finance', 'Legal', 'Design', 'Productivity'];
+  const SPARK = 'assets/claude-spark.svg';
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out', duration: .6 } });
+  const show = (el, t0, t1) => { tl.set(el, { visibility: 'visible' }, t0); if (t1 != null) tl.set(el, { visibility: 'hidden' }, t1); };
+  const pop = (el, t, from = { autoAlpha: 0, y: 40 }, dur = .6) => tl.fromTo(el, from, { autoAlpha: 1, x: 0, y: 0, scale: 1, rotation: 0, duration: dur, immediateRender: false }, t);
+  const drift = (sec, t0, t1) => tl.fromTo(sec, { scale: 1.045 }, { scale: 1, duration: Math.max(.5, t1 - t0), ease: 'power1.out', immediateRender: false }, t0);
+
+  // ---------- build DOM from data ----------
+  const dock = $('#dock');
+  PLUGINS.forEach((p) => { const c = document.createElement('div'); c.className = 'chip'; c.textContent = p; c.dataset.omId = 'chip-' + p.toLowerCase(); dock.appendChild(c); });
+  const chips = $$('.chip');
+  const fan = $('#fan');
+  const FAN = [[300, 760, -9], [630, 700, 7], [250, 1000, -4], [640, 960, 10], [450, 1120, -2]];
+  PLUGINS.forEach((p, i) => {
+    const c = document.createElement('div'); c.className = 'card'; c.dataset.omId = 'card-' + p.toLowerCase();
+    c.style.left = FAN[i][0] + 'px'; c.style.top = FAN[i][1] + 'px';
+    c.innerHTML = `<div class="nm">${p}</div><div class="by"><img src="${SPARK}" alt="">by Anthropic</div><div class="plus">+</div>`;
+    fan.appendChild(c);
+  });
+  const cards = $$('#fan .card');
+  // calendar: 30 days
+  const cal = $('#cal');
+  for (let i = 0; i < 35; i++) { const d = document.createElement('div'); d.className = 'cell'; if (i < 30) d.innerHTML = '<i></i>'; else d.style.opacity = .35; cal.appendChild(d); }
+  // contract documents (legal and the turn)
+  const fillDoc = (doc, w) => {
+    const L = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    L.forEach((i) => { const l = document.createElement('div'); l.className = 'ln'; l.style.top = (60 + i * 44) + 'px'; l.style.width = (w - 100 - (i * 37 % 120)) + 'px'; doc.appendChild(l); });
+    [[2, 'niedrig', '#e8e6dc'], [6, 'mittel', '#efc6b3'], [9, 'hoch', '#D97757']].forEach(([i, lab, col], k) => {
+      const h = document.createElement('div'); h.className = 'hl'; h.style.top = (60 + i * 44 - 17) + 'px'; h.style.width = (w - 68) + 'px'; h.style.background = col; h.style.opacity = .55;
+      doc.insertBefore(h, doc.firstChild);
+      const r = document.createElement('div'); r.className = 'rk'; r.textContent = lab; r.style.top = (60 + i * 44 - 12) + 'px'; r.style.background = col;
+      if (k === 2) r.style.color = '#faf9f5';
+      doc.appendChild(r);
+    });
+  };
+  fillDoc($('#doc7'), 600); fillDoc($('#doc13'), 560);
+  // to-do list
+  const todo = $('#todo');
+  [280, 220, 250].forEach((w, i) => {
+    todo.insertAdjacentHTML('beforeend', `<div class="abs" style="left:0; top:${i * 110}px; display:flex; align-items:center; gap:24px">
+      <span class="box" style="position:relative"><svg class="tick" viewBox="0 0 24 24" style="position:absolute; left:6px; top:6px; width:62px" fill="none" stroke="#D97757" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5" stroke-dasharray="30" stroke-dashoffset="30"/></svg></span>
+      <span style="display:block; width:${w}px; height:20px; border-radius:10px; background:#e8e6dc"></span></div>`);
+  });
+  // search results: similar names, only one by Anthropic
+  const results = $('#results');
+  [['Marketing', 'by Anthropic', 1], ['Marketing Pro', 'by …', 0], ['Marketing Suite', 'by …', 0]].forEach(([n, by, real], i) => {
+    const c = document.createElement('div'); c.className = 'card res'; c.style.left = '465px'; c.style.top = (980 + i * 0) + 'px';
+    c.style.width = '700px'; c.style.height = '130px'; c.style.margin = '0 0 0 -350px'; c.style.padding = '24px 30px';
+    c.innerHTML = `<div class="nm" style="font-size:46px">${n}</div><div class="by" style="margin-top:8px">${real ? `<img src="${SPARK}" alt="">` : ''}${by}</div><div class="plus" style="top:38px">+</div>`;
+    c.dataset.real = real; c.dataset.omId = real ? 'result-anthropic' : 'result-' + i;
+    results.appendChild(c);
+  });
+  const res = $$('#results .card');
+  // folders for the badge
+  const folders = $('#folders');
+  PLUGINS.forEach((p, i) => {
+    const f = document.createElement('div'); f.className = 'folder'; f.dataset.omId = 'mappe-' + p.toLowerCase();
+    f.innerHTML = `<div class="sub">MAPPE</div><div class="lbl">${p}</div>`;
+    f.style.left = '255px'; f.style.top = '760px';
+    folders.appendChild(f);
+  });
+  const fold = $$('.folder');
+
+  // captions: 1–4 words, split at punctuation; active word in the accent
+  const capEl = $('#cap'); capEl.style.fontSize = V.capSize + 'px';
+  const words = S.beats.flatMap((b) => b.woerter.map((w) => ({ ...w, beat: b.id })));
+  const chunks = []; let cur = [];
+  words.forEach((w, i) => {
+    cur.push(w);
+    const next = words[i + 1];
+    if (!next || /[.!?,:]$/.test(w.wort) || cur.length >= 4 || next.beat !== w.beat) { chunks.push(cur); cur = []; }
+  });
+  chunks.forEach((ch, k) => {
+    const d = document.createElement('div'); d.className = 'chunk';
+    ch.forEach((w) => { const s = document.createElement('span'); s.className = 'w'; s.textContent = w.wort; d.appendChild(s); w.el = s; });
+    capEl.appendChild(d);
+    const t0 = ch[0].zeit, last = ch[ch.length - 1];
+    const nextT = chunks[k + 1] ? chunks[k + 1][0].zeit : S.dauer;
+    const t1 = Math.min(nextT, Math.max(last.zeit + .55, t0 + .5) + .9);
+    tl.set(d, { visibility: 'visible' }, t0).fromTo(d, { y: 14, autoAlpha: .001 }, { y: 0, autoAlpha: 1, duration: .18, ease: 'power2.out', immediateRender: false }, t0);
+    tl.set(d, { visibility: 'hidden' }, t1);
+    ch.forEach((w, j) => { tl.set(w.el, { attr: { 'data-on': 1 } }, w.zeit); tl.set(w.el, { attr: { 'data-on': 0 } }, j + 1 < ch.length ? ch[j + 1].zeit : t1); });
+  });
+
+  // ---------- B01 HOOK ----------
+  const T1 = vt('B01', 'Plugins');
+  tl.addLabel('scene:b01', 0);
+  // frame 0 is the poster: title set, first two cards already landing
+  cards.forEach((c, i) => {
+    const t = i < 2 ? 0 : Math.max(0, T1 - .5 + (i - 2) * .22);
+    tl.fromTo(c, { autoAlpha: i < 2 ? 1 : 0, y: i < 2 ? 60 : 260, rotation: FAN[i][2] * 2.4, scale: i < 2 ? .96 : .8 },
+      { autoAlpha: 1, y: 0, rotation: FAN[i][2], scale: 1, duration: .7, immediateRender: i < 2 }, t);
+    if (i >= 2) OM.sfx('pop', t + .1, { note: i, gain: .7 });
+  });
+  tl.fromTo('#hookB', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: .5, immediateRender: false }, wt('B01', 'Claude') - .1);
+  // cards fly up into the dock — the spine of the film
+  const toDock = en('B01') - .55;
+  cards.forEach((c, i) => tl.to(c, { x: () => 0, y: -560 - FAN[i][1] + 760, scale: .25, autoAlpha: 0, duration: .5, ease: 'power3.in' }, toDock + i * .04));
+  OM.sfx('whoosh', toDock + .2);
+  tl.fromTo('#dock', { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: .4, immediateRender: false }, toDock + .35);
+  chips.forEach((c, i) => tl.fromTo(c, { scale: .6 }, { scale: 1, duration: .5, ease: OM.spring(.2), immediateRender: false }, toDock + .35 + i * .05));
+  tl.set('#s01', { visibility: 'hidden' }, st('B02'));
+  gsap.set('#dock', { autoAlpha: 0 });
+
+  // ---------- B02 KONTEXT ----------
+  tl.addLabel('scene:b02', st('B02'));
+  show('#s02', st('B02'), st('B03')); drift('#s02', st('B02'), st('B03'));
+  pop('#q1', st('B02'), { autoAlpha: 0, x: 60 }); OM.sfx('pop', st('B02'), { note: 2 });
+  pop('#a1', wt('B02', 'Claude') + .1, { autoAlpha: 0, x: -60 }); OM.sfx('pop', wt('B02', 'Claude') + .1, { note: 4 });
+  pop('#vsA', vt('B02', 'Chatbot'), { autoAlpha: 0, scale: .8 }); OM.sfx('thud', vt('B02', 'Chatbot'));
+  tl.to('#vsA', { color: '#5e5d59', duration: .4 }, vt('B02', 'Mitarbeiter') - .3);
+  pop('#vsArrow', vt('B02', 'Mitarbeiter') - .35, { autoAlpha: 0, y: -30 });
+  pop('#vsB', vt('B02', 'Mitarbeiter'), { autoAlpha: 0, y: 50, scale: .9 }); OM.sfx('impact', vt('B02', 'Mitarbeiter'), { gain: .6 });
+
+  // ---------- B03 the colleague and the folder ----------
+  tl.addLabel('scene:b03', st('B03'));
+  show('#s03', st('B03'), st('B04')); drift('#s03', st('B03'), st('B04'));
+  pop('#badge', vt('B03', 'Kollegen') - .35, { autoAlpha: 0, y: 300, rotation: -8 }, .8); OM.sfx('thud', vt('B03', 'Kollegen') - .05);
+  gsap.set(fold, { autoAlpha: 0 }); gsap.set('#s03kick', { autoAlpha: 0 });
+  const tM = vt('B03', 'Einarbeitungsmappe');
+  tl.fromTo(fold[0], { autoAlpha: 1, x: 700, y: 40, rotation: 14 }, { x: 0, y: 0, rotation: -3, duration: .7, immediateRender: false }, tM - .3);
+  OM.sfx('paper', tM + .1);
+  pop('#s03kick', tM + .2, { autoAlpha: 0, y: 20 });
+  tl.set(fold[0], { autoAlpha: 0 }, st('B04'));
+
+  // ---------- B04 plugin = skills + connectors ----------
+  tl.addLabel('scene:b04', st('B04'));
+  show('#s04', st('B04'), st('B05')); drift('#s04', st('B04'), st('B05'));
+  const tP = vt('B04', 'Plugin');
+  pop('#eq', st('B04'), { autoAlpha: 0, y: 40 });
+  ['#skK', '#sk1', '#sk2', '#sk3'].forEach((s, i) => { pop(s, tP + .2 + i * .22, { autoAlpha: 0, x: -80 }); if (i) OM.sfx('tick', tP + .2 + i * .22); });
+  tl.to('#wires path', { strokeDashoffset: 0, duration: .7, stagger: .12, ease: 'power2.inOut' }, wt('B04', 'Verbindungen'));
+  OM.sfx('draw', wt('B04', 'Verbindungen'), { dur: .8 });
+  ['#cnK', '#cn1', '#cn2', '#cn3'].forEach((s, i) => pop(s, wt('B04', 'Verbindungen') + .3 + i * .18, { autoAlpha: 0, scale: .6 }));
+  pop('#oneJob', vt('B04', 'Job') - .25, { autoAlpha: 0, y: 40 }); OM.sfx('ding', vt('B04', 'Job'), { note: 5 });
+  // chip 0 lights as the marketing folder becomes the marketing plugin
+  const lightChip = (i, t) => { tl.set(chips, { className: 'chip' }, t); tl.set(chips[i], { className: 'chip on' }, t); tl.fromTo(chips[i], { scale: 1.25 }, { scale: 1, duration: .5, ease: OM.spring(.2), immediateRender: false }, t); };
+
+  // ---------- B05–B09 the five (the burst) ----------
+  const FIVE = [['B05', 'Marketing', '#v05'], ['B06', 'Finance', '#v06'], ['B07', 'Legal', '#v07'], ['B08', 'Design', '#v08'], ['B09', 'Productivity', '#v09']];
+  show('#s05', st('B05'), en('B09') + .15);
+  FIVE.forEach(([id, name, sec], i) => {
+    const t = vt(id, name);
+    tl.addLabel('scene:' + id.toLowerCase(), i === 0 ? st(id) : t);
+    tl.set('#pName', { textContent: name }, t);
+    tl.fromTo('#pName', { scale: 1.35, autoAlpha: 0, y: 30 }, { scale: 1, autoAlpha: 1, y: 0, duration: .45, immediateRender: false }, t);
+    if (i === 0) pop('#pKick', t, { autoAlpha: 0, y: 20 });
+    lightChip(i, t);
+    OM.sfx('hit', t, { gain: .8, pan: (i - 2) * .2 });
+    const tEnd = i < 4 ? vt(FIVE[i + 1][0], FIVE[i + 1][1]) : en(id) + .15;
+    show(sec, t, tEnd); drift(sec, t, tEnd);
+  });
+  // marketing: a 30-day calendar fills with posts
+  const tK = vt('B05', 'Kampagnen');
+  tl.fromTo('#cal .cell', { autoAlpha: 0, scale: .7 }, { autoAlpha: 1, scale: 1, duration: .35, stagger: .012, immediateRender: false }, tK - .3);
+  tl.to('#cal .cell i', { scale: 1, duration: .3, ease: OM.spring(.15), stagger: { each: .03, from: 'random', seed: 7 } }, tK + .1);
+  OM.sfx('tick', tK + .1); OM.sfx('tick', tK + .5, { pitch: 2 }); OM.sfx('tick', tK + .9, { pitch: 4 });
+  pop('#voice', wt('B05', 'Markenstimme') - .2, { autoAlpha: 0, y: 20 });
+  // finance: the table becomes an income statement
+  const tT = vt('B06', 'Tabelle');
+  ['#r1', '#r2', '#r3'].forEach((s, i) => { tl.fromTo(s, { scaleX: 0, transformOrigin: '0 50%' }, { scaleX: 1, duration: .5, immediateRender: false }, tT - .2 + i * .2); OM.sfx('tick', tT - .1 + i * .2, { pitch: i * 2 }); });
+  pop('#guv', wt('B06', 'Gewinn') - .1, { autoAlpha: 0, y: 30 }); OM.sfx('ding', wt('B06', 'Gewinn'), { note: 3 });
+  // legal: three clauses marked low / mid / high
+  const tC = vt('B07', 'Klauseln');
+  pop('#doc7', vt('B07', 'Legal') + .1, { autoAlpha: 0, y: 80 }, .5);
+  tl.fromTo('#doc7 .hl', { scaleX: 0 }, { scaleX: 1, duration: .35, stagger: .3, ease: 'power2.out', immediateRender: false }, tC);
+  tl.fromTo('#doc7 .rk', { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: .3, stagger: .3, immediateRender: false }, tC + .15);
+  OM.sfx('draw', tC, { dur: .9 });
+  // design: honest notes on a generic page
+  pop('#site', vt('B08', 'Design') + .1, { autoAlpha: 0, y: 80 }, .5);
+  const tKI = vt('B08', 'KI');
+  tl.fromTo('#n1', { autoAlpha: 0, scale: 1.4, rotation: 12 }, { autoAlpha: 1, scale: 1, rotation: 4, duration: .35, immediateRender: false }, tKI - .6);
+  tl.fromTo('#n2', { autoAlpha: 0, scale: 1.4, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: .35, immediateRender: false }, tKI);
+  OM.sfx('paper', tKI - .55); OM.sfx('paper', tKI + .05, { pitch: 2 });
+  // productivity: tasks get ticked, people and projects remembered
+  const tA = vt('B09', 'Aufgaben');
+  tl.fromTo('#todo > div', { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: .4, stagger: .12, immediateRender: false }, tA - .45);
+  tl.to('#todo .tick path', { strokeDashoffset: 0, duration: .25, stagger: .3, ease: 'power2.out' }, tA);
+  [0, 1, 2].forEach((i) => OM.sfx('ding', tA + .1 + i * .3, { note: 2 + i * 2, gain: .5 }));
+  pop('#pp1', wt('B09', 'Projekte') - .5, { autoAlpha: 0, x: 40 });
+  pop('#pp2', wt('B09', 'Projekte') - .2, { autoAlpha: 0, x: 40 });
+  pop('#mem', wt('B09', 'merkt'), { autoAlpha: 0, y: 20 });
+
+  // ---------- B10 install ----------
+  tl.addLabel('scene:b10', st('B10'));
+  show('#s10', st('B10'), st('B11')); drift('#s10', st('B10'), st('B11'));
+  tl.set(chips, { className: 'chip' }, st('B10'));
+  const tZ = vt('B10', 'zwei');
+  const cnt = { v: 0 };
+  pop('#min', st('B10'), { autoAlpha: 0, scale: .85 });
+  tl.to(cnt, { v: 2, duration: tZ - st('B10'), ease: 'power2.out', onUpdate: () => { $('#minN').textContent = '~' + Math.round(cnt.v); } }, st('B10'));
+  gsap.set('#minN', { textContent: '~0' });
+  OM.sfx('count', st('B10'), { dur: tZ - st('B10') });
+  pop('#paid', tZ + .2, { autoAlpha: 0, y: 16 });
+  const tCu = vt('B10', 'Customize');
+  const steps = [[tCu, '#st1'], [wt('B10', 'Plugins'), '#st2'], [wt('B10', 'Discover'), '#st3']];
+  pop('#ar1', steps[1][0] - .15, { autoAlpha: 0 }); pop('#ar2', steps[2][0] - .15, { autoAlpha: 0 });
+  const CX = [[205, 840], [470, 840], [725, 840]];
+  tl.set('#cursor', { visibility: 'visible', x: 300, y: 1100 }, tCu - .5);
+  steps.forEach(([t, s], i) => {
+    pop(s, t - .25, { autoAlpha: 0, y: 30 }, .4);
+    tl.to('#cursor', { x: CX[i][0], y: CX[i][1], duration: .35, ease: 'power3.out' }, t - .3);
+    tl.to('#cursor', { scale: .85, duration: .06, yoyo: true, repeat: 1, ease: 'none' }, t + .05);
+    tl.set(s, { className: 'pill on' }, t + .05);
+    OM.sfx('click', t + .05);
+  });
+  const tAn = vt('B10', 'Anthropic');
+  tl.set(['#st1', '#st2', '#st3', '#ar1', '#ar2'], { autoAlpha: .35 }, tAn - .8);
+  res.forEach((c, i) => tl.fromTo(c, { autoAlpha: 0, y: 1000 - 980 + i * 160 + 60 }, { autoAlpha: 1, y: i * 160, duration: .45, immediateRender: false }, tAn - .8 + i * .1));
+  tl.to(res.filter((c) => c.dataset.real === '0'), { autoAlpha: .3, duration: .3 }, tAn);
+  tl.to(res[0], { scale: 1.04, boxShadow: '0 0 0 4px #D97757, 0 24px 60px -20px #14141355', duration: .3 }, tAn);
+  OM.sfx('sparkle', tAn);
+  tl.to('#cursor', { x: 760, y: 1020, duration: .35, ease: 'power3.out' }, tAn + .1);
+  tl.to('#cursor', { scale: .85, duration: .06, yoyo: true, repeat: 1 }, tAn + .5);
+  tl.to(res[0].querySelector('.plus'), { backgroundColor: '#D97757', color: '#faf9f5', rotation: 90, duration: .3 }, tAn + .5);
+  OM.sfx('click', tAn + .5);
+  tl.set('#cursor', { visibility: 'hidden' }, st('B11'));
+
+  // ---------- B11 onboarding talk ----------
+  tl.addLabel('scene:b11', st('B11'));
+  const tG = vt('B11', 'Einarbeitungsgespräch'), tPr = vt('B11', 'Prompt');
+  show('#s03', st('B11'), tPr - .2);
+  tl.set('#badgeDay', { textContent: 'Einarbeitungsgespräch' }, st('B11'));
+  tl.set('#s03kick', { autoAlpha: 0 }, st('B11'));
+  pop('#badge', st('B11'), { autoAlpha: 0, scale: .85 });
+  tl.fromTo(fold[0], { autoAlpha: 1, x: 0, y: 0, rotation: -3 }, { y: 0, duration: .01, immediateRender: false }, st('B11'));
+  tl.fromTo('#badgeDay', { color: '#5e5d59' }, { color: '#D97757', duration: .3, immediateRender: false }, tG);
+  OM.sfx('pop', tG, { note: 5 });
+  tl.set(fold[0], { autoAlpha: 0 }, tPr - .2);
+  show('#s12', tPr - .2, en('B12') + .15);
+  tl.set(['#f1', '#f2', '#prio'], { autoAlpha: 0 }, tPr - .2);
+  pop('#sp', tPr - .2, { autoAlpha: 0, y: 60 }); OM.sfx('whoosh', tPr - .2, { gain: .5 });
+
+  // ---------- B12 one question at a time ----------
+  tl.addLabel('scene:b12', st('B12'));
+  pop('#f1', vt('B12', 'Frage') - .1, { autoAlpha: 0, x: -60 }); OM.sfx('pop', vt('B12', 'Frage'), { note: 3 });
+  tl.to('#sp', { autoAlpha: .45, duration: .3 }, vt('B12', 'Frage'));
+  pop('#f2', vt('B12', 'schreibst') - .3, { autoAlpha: 0, x: -60 }); OM.sfx('pop', vt('B12', 'schreibst') - .2, { note: 5 });
+  tl.fromTo('#prio > *', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: .35, stagger: .1, immediateRender: false }, vt('B12', 'Woche') - .5);
+  OM.sfx('tick', vt('B12', 'Woche') - .4); OM.sfx('tick', vt('B12', 'Woche') - .3, { pitch: 2 }); OM.sfx('tick', vt('B12', 'Woche') - .2, { pitch: 4 });
+
+  // ---------- B13 the limit (dark, the stop) ----------
+  tl.addLabel('scene:b13', st('B13'));
+  show('#s13', st('B13'), st('B14'));
+  tl.to('#film', { backgroundColor: '#141413', duration: .3, ease: 'power2.inOut' }, st('B13'));
+  tl.to('#cap', { color: '#faf9f5', duration: .3 }, st('B13'));
+  tl.to('#dock', { autoAlpha: .25, duration: .3 }, st('B13'));
+  pop('#wk', st('B13') + .1, { autoAlpha: 0, y: 20 });
+  const tR = vt('B13', 'Risiken');
+  pop('#doc13', tR - .4, { autoAlpha: 0, y: 80 }, .5);
+  tl.fromTo('#doc13 .hl', { scaleX: 0 }, { scaleX: 1, duration: .3, stagger: .2, immediateRender: false }, tR);
+  tl.fromTo('#doc13 .rk', { autoAlpha: 0 }, { autoAlpha: 1, duration: .25, stagger: .2, immediateRender: false }, tR + .1);
+  const tAw = vt('B13', 'Anwalt');
+  tl.fromTo('#anwalt', { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: .3, ease: 'power4.out', immediateRender: false }, tAw - .15);
+  OM.sfx('stamp', tAw - .05);
+  pop('#anwalt2', tAw + .3, { autoAlpha: 0, y: 14 });
+
+  // ---------- B14 payoff (the drop) ----------
+  tl.addLabel('scene:payoff', st('B14'));
+  show('#s14', st('B14'), vt('B14', 'Kollege') - .2);
+  tl.set('#film', { backgroundColor: V.paper }, st('B14'));
+  tl.set('#cap', { color: V.ink }, st('B14'));
+  tl.set('#dock', { autoAlpha: 1 }, st('B14'));
+  tl.set(chips, { className: 'chip on' }, st('B14'));
+  [['#n5', '#n5l', wt('B14', 'Fünf')], ['#n2', '#n2l', wt('B14', 'zwei')], ['#n1x', '#n1l', wt('B14', 'ein')]].forEach(([n, l, t], i) => {
+    tl.fromTo(n, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: .35, ease: 'power4.out', immediateRender: false }, t);
+    pop(l, t + .12, { autoAlpha: 0, x: -20 }, .35);
+    OM.sfx(i === 0 ? 'impact' : 'hit', t, { gain: i === 0 ? .8 : .9 });
+  });
+  const tKo = vt('B14', 'Kollege');
+  show('#s03', tKo - .2, st('B15'));
+  tl.set('#badgeDay', { textContent: 'kennt deine Arbeit', color: '#D97757' }, tKo - .2);
+  pop('#badge', tKo - .2, { autoAlpha: 0, scale: .85 }, .5);
+  fold.forEach((f, i) => {
+    tl.fromTo(f, { autoAlpha: 0, x: 0, y: 260, rotation: 0, scale: .9 },
+      { autoAlpha: 1, x: (i - 2) * 46, y: -i * 34, rotation: (i - 2) * 4, scale: .82, duration: .45, ease: 'back.out(1.4)', immediateRender: false }, tKo - .1 + i * .08);
+  });
+  OM.sfx('thud', tKo + .1); OM.sfx('chime', tKo + .4);
+
+  // ---------- B15 CTA → loop to the first frame ----------
+  tl.addLabel('scene:b15', st('B15'));
+  const tN = vt('B15', 'nächste Mal');
+  show('#s15', st('B15'), tN - .4);
+  tl.set(chips, { className: 'chip' }, st('B15'));
+  tl.fromTo('#bm', { autoAlpha: 0, y: -80, scale: .7 }, { autoAlpha: 1, y: 0, scale: 1, duration: .55, ease: 'back.out(2)', immediateRender: false }, st('B15'));
+  tl.fromTo('#bm path', { fill: 'rgba(0,0,0,0)' }, { fill: '#141413', duration: .2, immediateRender: false }, st('B15') + .55);
+  OM.sfx('pop', st('B15') + .5, { note: 5 });
+  pop('#save', st('B15') + .2, { autoAlpha: 0, y: 30 });
+  // the end is the beginning: the hook frame returns, cards land in their places
+  tl.set('#s01', { visibility: 'visible' }, tN - .4);
+  tl.to('#dock', { autoAlpha: 0, duration: .3 }, tN - .4);
+  cards.forEach((c, i) => tl.fromTo(c, { autoAlpha: 0, x: 0, y: 260, scale: .8, rotation: FAN[i][2] * 2.4 },
+    { autoAlpha: 1, x: 0, y: 0, scale: 1, rotation: FAN[i][2], duration: .6, immediateRender: false }, tN - .4 + i * .12));
+  tl.set('#hookB', { autoAlpha: 1 }, tN - .4);
+  OM.sfx('whoosh', tN - .45, { gain: .5 });
+  tl.to({}, { duration: Math.max(.01, END - tl.duration()) }, tl.duration());
+
+  OM.music({ product: 'explainer', drop: 'payoff', ending: 'ring', brand: 'Claude',
+             energy: { b01: .75, b02: .55, b03: .45, b04: .55, b05: .9, b10: .7, b11: .6, b12: .55, b13: .3, payoff: 1, b15: .7 } });
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines['film'] = tl;
+</script>
+</body>
+</html>

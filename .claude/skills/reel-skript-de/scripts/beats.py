@@ -292,6 +292,7 @@ def main():
         "beats": [{
             "id": b["id"], "rolle": b["rolle"], "start": b["start"], "ende": b["ende"],
             "sprech": b["sprech"], "text": b["text"] or None,
+            "woerter": [{"wort": w, "zeit": z} for w, z in zip(b["sprech"].split(), b["_wortzeiten"])],
             "visuals": [{"zeit": v.get("zeit"), "anker": v["anker"], "typ": v["typ"],
                          "beschreibung": v["beschreibung"]} for v in b["visuals"]],
         } for b in beats],
