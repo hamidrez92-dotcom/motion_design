@@ -1,0 +1,934 @@
+{
+ "titel": "Das Repo für kostenlose KI-APIs",
+ "quelle": "../quelle/repo-readme.md",
+ "zeiten": "geschätzt",
+ "wpm": 150.0,
+ "dauer": 64.75,
+ "format": {
+  "breite": 1080,
+  "hoehe": 1920,
+  "safe_zone": {
+   "oben": 230,
+   "unten": 1440,
+   "rechts": 230
+  }
+ },
+ "beats": [
+  {
+   "id": "B01",
+   "rolle": "HOOK",
+   "start": 0.0,
+   "ende": 2.2,
+   "sprech": "Dieses GitHub-Repo kennt kaum jemand.",
+   "text": "Kaum jemand kennt es",
+   "woerter": [
+    {
+     "wort": "Dieses",
+     "zeit": 0.0
+    },
+    {
+     "wort": "GitHub-Repo",
+     "zeit": 0.4
+    },
+    {
+     "wort": "kennt",
+     "zeit": 0.8
+    },
+    {
+     "wort": "kaum",
+     "zeit": 1.2
+    },
+    {
+     "wort": "jemand.",
+     "zeit": 1.6
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 0.4,
+     "anker": "GitHub-Repo",
+     "typ": "logo",
+     "beschreibung": "Das GitHub-Zeichen groß im Hintergrund, Fragezeichen daneben."
+    }
+   ]
+  },
+  {
+   "id": "B02",
+   "rolle": "KONTEXT",
+   "start": 2.35,
+   "ende": 8.15,
+   "sprech": "Dabei bekommst du damit starke KI-Modelle, ohne einen Cent für die API zu zahlen.",
+   "text": "0 € API-Rechnung",
+   "woerter": [
+    {
+     "wort": "Dabei",
+     "zeit": 2.35
+    },
+    {
+     "wort": "bekommst",
+     "zeit": 2.75
+    },
+    {
+     "wort": "du",
+     "zeit": 3.15
+    },
+    {
+     "wort": "damit",
+     "zeit": 3.55
+    },
+    {
+     "wort": "starke",
+     "zeit": 3.95
+    },
+    {
+     "wort": "KI-Modelle,",
+     "zeit": 4.35
+    },
+    {
+     "wort": "ohne",
+     "zeit": 4.75
+    },
+    {
+     "wort": "einen",
+     "zeit": 5.15
+    },
+    {
+     "wort": "Cent",
+     "zeit": 5.55
+    },
+    {
+     "wort": "für",
+     "zeit": 5.95
+    },
+    {
+     "wort": "die",
+     "zeit": 6.35
+    },
+    {
+     "wort": "API",
+     "zeit": 6.75
+    },
+    {
+     "wort": "zu",
+     "zeit": 7.15
+    },
+    {
+     "wort": "zahlen.",
+     "zeit": 7.55
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 4.35,
+     "anker": "KI-Modelle",
+     "typ": "ui",
+     "beschreibung": "Eine API-Rechnung, deren Betrag auf 0,00 € fällt."
+    },
+    {
+     "zeit": 5.55,
+     "anker": "Cent",
+     "typ": "zahl",
+     "beschreibung": "0,00 € groß."
+    }
+   ]
+  },
+  {
+   "id": "B03",
+   "rolle": "PUNKT",
+   "start": 8.3,
+   "ende": 12.7,
+   "sprech": "Es listet über 500 kostenlose KI-APIs von 30 Anbietern.",
+   "text": "513+ APIs · 30 Anbieter",
+   "woerter": [
+    {
+     "wort": "Es",
+     "zeit": 8.3
+    },
+    {
+     "wort": "listet",
+     "zeit": 8.7
+    },
+    {
+     "wort": "über",
+     "zeit": 9.1
+    },
+    {
+     "wort": "500",
+     "zeit": 9.5
+    },
+    {
+     "wort": "kostenlose",
+     "zeit": 10.3
+    },
+    {
+     "wort": "KI-APIs",
+     "zeit": 10.7
+    },
+    {
+     "wort": "von",
+     "zeit": 11.1
+    },
+    {
+     "wort": "30",
+     "zeit": 11.5
+    },
+    {
+     "wort": "Anbietern.",
+     "zeit": 12.1
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 9.5,
+     "anker": "500",
+     "typ": "zahl",
+     "beschreibung": "513+ zählt hoch."
+    },
+    {
+     "zeit": 11.5,
+     "anker": "30",
+     "typ": "zahl",
+     "beschreibung": "30 Anbieter."
+    },
+    {
+     "zeit": 8.7,
+     "anker": "listet",
+     "typ": "screenshot",
+     "beschreibung": "Screenshot des README mit der Anbietertabelle."
+    }
+   ]
+  },
+  {
+   "id": "B04",
+   "rolle": "PUNKT",
+   "start": 12.85,
+   "ende": 16.85,
+   "sprech": "Dauerhaft kostenlos. Keine Testguthaben, die nach einem Monat verfallen.",
+   "text": "dauerhaft kostenlos",
+   "woerter": [
+    {
+     "wort": "Dauerhaft",
+     "zeit": 12.85
+    },
+    {
+     "wort": "kostenlos.",
+     "zeit": 13.25
+    },
+    {
+     "wort": "Keine",
+     "zeit": 13.85
+    },
+    {
+     "wort": "Testguthaben,",
+     "zeit": 14.25
+    },
+    {
+     "wort": "die",
+     "zeit": 14.65
+    },
+    {
+     "wort": "nach",
+     "zeit": 15.05
+    },
+    {
+     "wort": "einem",
+     "zeit": 15.45
+    },
+    {
+     "wort": "Monat",
+     "zeit": 15.85
+    },
+    {
+     "wort": "verfallen.",
+     "zeit": 16.25
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 12.85,
+     "anker": "Dauerhaft",
+     "typ": "text",
+     "beschreibung": "„dauerhaft kostenlos“ groß."
+    },
+    {
+     "zeit": 14.25,
+     "anker": "Testguthaben",
+     "typ": "liste",
+     "beschreibung": "✗ Keine Testguthaben, die verfallen."
+    }
+   ]
+  },
+  {
+   "id": "B05",
+   "rolle": "PUNKT",
+   "start": 17.0,
+   "ende": 21.2,
+   "sprech": "Und bei den meisten brauchst du nicht mal eine Kreditkarte.",
+   "text": null,
+   "woerter": [
+    {
+     "wort": "Und",
+     "zeit": 17.0
+    },
+    {
+     "wort": "bei",
+     "zeit": 17.4
+    },
+    {
+     "wort": "den",
+     "zeit": 17.8
+    },
+    {
+     "wort": "meisten",
+     "zeit": 18.2
+    },
+    {
+     "wort": "brauchst",
+     "zeit": 18.6
+    },
+    {
+     "wort": "du",
+     "zeit": 19.0
+    },
+    {
+     "wort": "nicht",
+     "zeit": 19.4
+    },
+    {
+     "wort": "mal",
+     "zeit": 19.8
+    },
+    {
+     "wort": "eine",
+     "zeit": 20.2
+    },
+    {
+     "wort": "Kreditkarte.",
+     "zeit": 20.6
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 18.2,
+     "anker": "meisten",
+     "typ": "ui",
+     "beschreibung": "Eine Kreditkarte, die durchgestrichen wird."
+    },
+    {
+     "zeit": 20.6,
+     "anker": "Kreditkarte",
+     "typ": "liste",
+     "beschreibung": "✗ Bei den meisten keine Kreditkarte."
+    }
+   ]
+  },
+  {
+   "id": "B06",
+   "rolle": "PUNKT",
+   "start": 21.35,
+   "ende": 24.35,
+   "sprech": "Das Repo heißt awesome free LLM APIs.",
+   "text": "awesome-freellm-apis",
+   "woerter": [
+    {
+     "wort": "Das",
+     "zeit": 21.35
+    },
+    {
+     "wort": "Repo",
+     "zeit": 21.75
+    },
+    {
+     "wort": "heißt",
+     "zeit": 22.15
+    },
+    {
+     "wort": "awesome",
+     "zeit": 22.55
+    },
+    {
+     "wort": "free",
+     "zeit": 22.95
+    },
+    {
+     "wort": "LLM",
+     "zeit": 23.35
+    },
+    {
+     "wort": "APIs.",
+     "zeit": 23.75
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 22.15,
+     "anker": "heißt",
+     "typ": "screenshot",
+     "beschreibung": "Der Repo-Name wird getippt, darunter die echte GitHub-Seite."
+    }
+   ]
+  },
+  {
+   "id": "B07",
+   "rolle": "PUNKT",
+   "start": 24.5,
+   "ende": 28.7,
+   "sprech": "Drin sind Google, Nvidia, Mistral, Groq, DeepSeek und viele mehr.",
+   "text": null,
+   "woerter": [
+    {
+     "wort": "Drin",
+     "zeit": 24.5
+    },
+    {
+     "wort": "sind",
+     "zeit": 24.9
+    },
+    {
+     "wort": "Google,",
+     "zeit": 25.3
+    },
+    {
+     "wort": "Nvidia,",
+     "zeit": 25.7
+    },
+    {
+     "wort": "Mistral,",
+     "zeit": 26.1
+    },
+    {
+     "wort": "Groq,",
+     "zeit": 26.5
+    },
+    {
+     "wort": "DeepSeek",
+     "zeit": 26.9
+    },
+    {
+     "wort": "und",
+     "zeit": 27.3
+    },
+    {
+     "wort": "viele",
+     "zeit": 27.7
+    },
+    {
+     "wort": "mehr.",
+     "zeit": 28.1
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 25.3,
+     "anker": "Google",
+     "typ": "logo",
+     "beschreibung": "Logo-Kreise erscheinen nacheinander auf jedem Namen: Google Gemini, NVIDIA, Mistral, Groq, DeepSeek."
+    },
+    {
+     "zeit": 27.7,
+     "anker": "viele",
+     "typ": "logo",
+     "beschreibung": "Weitere Logo-Kreise füllen das Bild."
+    }
+   ]
+  },
+  {
+   "id": "B08",
+   "rolle": "WENDE",
+   "start": 28.85,
+   "ende": 33.05,
+   "sprech": "Und jetzt kommt der Teil, der es wirklich nützlich macht.",
+   "text": "wirklich nützlich",
+   "woerter": [
+    {
+     "wort": "Und",
+     "zeit": 28.85
+    },
+    {
+     "wort": "jetzt",
+     "zeit": 29.25
+    },
+    {
+     "wort": "kommt",
+     "zeit": 29.65
+    },
+    {
+     "wort": "der",
+     "zeit": 30.05
+    },
+    {
+     "wort": "Teil,",
+     "zeit": 30.45
+    },
+    {
+     "wort": "der",
+     "zeit": 30.85
+    },
+    {
+     "wort": "es",
+     "zeit": 31.25
+    },
+    {
+     "wort": "wirklich",
+     "zeit": 31.65
+    },
+    {
+     "wort": "nützlich",
+     "zeit": 32.05
+    },
+    {
+     "wort": "macht.",
+     "zeit": 32.45
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 32.05,
+     "anker": "nützlich",
+     "typ": "text",
+     "beschreibung": "„wirklich nützlich“ groß."
+    }
+   ]
+  },
+  {
+   "id": "B09",
+   "rolle": "PUNKT",
+   "start": 33.2,
+   "ende": 37.4,
+   "sprech": "Für Claude Code, Cursor und Codex liegen fertige Konfigurationen bereit.",
+   "text": null,
+   "woerter": [
+    {
+     "wort": "Für",
+     "zeit": 33.2
+    },
+    {
+     "wort": "Claude",
+     "zeit": 33.6
+    },
+    {
+     "wort": "Code,",
+     "zeit": 34.0
+    },
+    {
+     "wort": "Cursor",
+     "zeit": 34.4
+    },
+    {
+     "wort": "und",
+     "zeit": 34.8
+    },
+    {
+     "wort": "Codex",
+     "zeit": 35.2
+    },
+    {
+     "wort": "liegen",
+     "zeit": 35.6
+    },
+    {
+     "wort": "fertige",
+     "zeit": 36.0
+    },
+    {
+     "wort": "Konfigurationen",
+     "zeit": 36.4
+    },
+    {
+     "wort": "bereit.",
+     "zeit": 36.8
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 33.6,
+     "anker": "Claude",
+     "typ": "logo",
+     "beschreibung": "Von den Anbieter-Logos laufen Linien zu den Tools Claude Code, Cursor, Codex."
+    },
+    {
+     "zeit": 36.4,
+     "anker": "Konfigurationen",
+     "typ": "screenshot",
+     "beschreibung": "Ein Konfigurations-Schnipsel aus dem README."
+    }
+   ]
+  },
+  {
+   "id": "B10",
+   "rolle": "PUNKT",
+   "start": 37.55,
+   "ende": 42.15,
+   "sprech": "Kein kompliziertes Setup. Kein Wühlen in Dokumentationen. Kopieren, einfügen, fertig.",
+   "text": null,
+   "woerter": [
+    {
+     "wort": "Kein",
+     "zeit": 37.55
+    },
+    {
+     "wort": "kompliziertes",
+     "zeit": 37.95
+    },
+    {
+     "wort": "Setup.",
+     "zeit": 38.35
+    },
+    {
+     "wort": "Kein",
+     "zeit": 38.95
+    },
+    {
+     "wort": "Wühlen",
+     "zeit": 39.35
+    },
+    {
+     "wort": "in",
+     "zeit": 39.75
+    },
+    {
+     "wort": "Dokumentationen.",
+     "zeit": 40.15
+    },
+    {
+     "wort": "Kopieren,",
+     "zeit": 40.75
+    },
+    {
+     "wort": "einfügen,",
+     "zeit": 41.15
+    },
+    {
+     "wort": "fertig.",
+     "zeit": 41.55
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 38.35,
+     "anker": "Setup",
+     "typ": "liste",
+     "beschreibung": "✗ Kein kompliziertes Setup."
+    },
+    {
+     "zeit": 39.35,
+     "anker": "Wühlen",
+     "typ": "liste",
+     "beschreibung": "✗ Kein Wühlen in Dokus."
+    },
+    {
+     "zeit": 40.75,
+     "anker": "Kopieren",
+     "typ": "ui",
+     "beschreibung": "Der Schnipsel wird kopiert und eingefügt, ein Haken erscheint."
+    }
+   ]
+  },
+  {
+   "id": "B11",
+   "rolle": "WENDE",
+   "start": 42.3,
+   "ende": 48.5,
+   "sprech": "Klar, auch die Gratis-Stufen haben Limits. Aber du kannst einfach zwischen 30 Anbietern wechseln.",
+   "text": "Limit? Anbieter wechseln",
+   "woerter": [
+    {
+     "wort": "Klar,",
+     "zeit": 42.3
+    },
+    {
+     "wort": "auch",
+     "zeit": 42.7
+    },
+    {
+     "wort": "die",
+     "zeit": 43.1
+    },
+    {
+     "wort": "Gratis-Stufen",
+     "zeit": 43.5
+    },
+    {
+     "wort": "haben",
+     "zeit": 43.9
+    },
+    {
+     "wort": "Limits.",
+     "zeit": 44.3
+    },
+    {
+     "wort": "Aber",
+     "zeit": 44.9
+    },
+    {
+     "wort": "du",
+     "zeit": 45.3
+    },
+    {
+     "wort": "kannst",
+     "zeit": 45.7
+    },
+    {
+     "wort": "einfach",
+     "zeit": 46.1
+    },
+    {
+     "wort": "zwischen",
+     "zeit": 46.5
+    },
+    {
+     "wort": "30",
+     "zeit": 46.9
+    },
+    {
+     "wort": "Anbietern",
+     "zeit": 47.5
+    },
+    {
+     "wort": "wechseln.",
+     "zeit": 47.9
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 44.3,
+     "anker": "Limits",
+     "typ": "ui",
+     "beschreibung": "Eine Meldung „Limit erreicht“."
+    },
+    {
+     "zeit": 47.9,
+     "anker": "wechseln",
+     "typ": "diagramm",
+     "beschreibung": "Ein Schalter springt zum nächsten Anbieter-Logo."
+    }
+   ]
+  },
+  {
+   "id": "B12",
+   "rolle": "PUNKT",
+   "start": 48.65,
+   "ende": 54.65,
+   "sprech": "Und die Liste wird täglich aktualisiert. Kommt ein neues Gratis-Angebot, steht es schon drin.",
+   "text": "täglich aktualisiert",
+   "woerter": [
+    {
+     "wort": "Und",
+     "zeit": 48.65
+    },
+    {
+     "wort": "die",
+     "zeit": 49.05
+    },
+    {
+     "wort": "Liste",
+     "zeit": 49.45
+    },
+    {
+     "wort": "wird",
+     "zeit": 49.85
+    },
+    {
+     "wort": "täglich",
+     "zeit": 50.25
+    },
+    {
+     "wort": "aktualisiert.",
+     "zeit": 50.65
+    },
+    {
+     "wort": "Kommt",
+     "zeit": 51.25
+    },
+    {
+     "wort": "ein",
+     "zeit": 51.65
+    },
+    {
+     "wort": "neues",
+     "zeit": 52.05
+    },
+    {
+     "wort": "Gratis-Angebot,",
+     "zeit": 52.45
+    },
+    {
+     "wort": "steht",
+     "zeit": 52.85
+    },
+    {
+     "wort": "es",
+     "zeit": 53.25
+    },
+    {
+     "wort": "schon",
+     "zeit": 53.65
+    },
+    {
+     "wort": "drin.",
+     "zeit": 54.05
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 50.25,
+     "anker": "täglich",
+     "typ": "icon",
+     "beschreibung": "Ein Globus, eine Linie zur Liste, die ein neues Element bekommt."
+    },
+    {
+     "zeit": 52.05,
+     "anker": "neues",
+     "typ": "screenshot",
+     "beschreibung": "Neue Zeile in der Tabelle leuchtet auf."
+    },
+    {
+     "zeit": 52.85,
+     "anker": "steht",
+     "typ": "text",
+     "beschreibung": "„schon drin“ mit Haken."
+    }
+   ]
+  },
+  {
+   "id": "B13",
+   "rolle": "PAYOFF",
+   "start": 54.8,
+   "ende": 59.2,
+   "sprech": "Für KI zu bezahlen ist damit eine Entscheidung. Keine Pflicht.",
+   "text": "Wahl statt Pflicht",
+   "woerter": [
+    {
+     "wort": "Für",
+     "zeit": 54.8
+    },
+    {
+     "wort": "KI",
+     "zeit": 55.2
+    },
+    {
+     "wort": "zu",
+     "zeit": 55.6
+    },
+    {
+     "wort": "bezahlen",
+     "zeit": 56.0
+    },
+    {
+     "wort": "ist",
+     "zeit": 56.4
+    },
+    {
+     "wort": "damit",
+     "zeit": 56.8
+    },
+    {
+     "wort": "eine",
+     "zeit": 57.2
+    },
+    {
+     "wort": "Entscheidung.",
+     "zeit": 57.6
+    },
+    {
+     "wort": "Keine",
+     "zeit": 58.2
+    },
+    {
+     "wort": "Pflicht.",
+     "zeit": 58.6
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 57.6,
+     "anker": "Entscheidung",
+     "typ": "text",
+     "beschreibung": "„eine Entscheidung“ groß."
+    },
+    {
+     "zeit": 58.6,
+     "anker": "Pflicht",
+     "typ": "text",
+     "beschreibung": "„keine Pflicht“ setzt sich darunter."
+    }
+   ]
+  },
+  {
+   "id": "B14",
+   "rolle": "CTA",
+   "start": 59.35,
+   "ende": 64.75,
+   "sprech": "Speicher dir das, und folg mir für mehr KI-Tools, die kaum jemand kennt.",
+   "text": "Speichern · Folgen",
+   "woerter": [
+    {
+     "wort": "Speicher",
+     "zeit": 59.35
+    },
+    {
+     "wort": "dir",
+     "zeit": 59.75
+    },
+    {
+     "wort": "das,",
+     "zeit": 60.15
+    },
+    {
+     "wort": "und",
+     "zeit": 60.55
+    },
+    {
+     "wort": "folg",
+     "zeit": 60.95
+    },
+    {
+     "wort": "mir",
+     "zeit": 61.35
+    },
+    {
+     "wort": "für",
+     "zeit": 61.75
+    },
+    {
+     "wort": "mehr",
+     "zeit": 62.15
+    },
+    {
+     "wort": "KI-Tools,",
+     "zeit": 62.55
+    },
+    {
+     "wort": "die",
+     "zeit": 62.95
+    },
+    {
+     "wort": "kaum",
+     "zeit": 63.35
+    },
+    {
+     "wort": "jemand",
+     "zeit": 63.75
+    },
+    {
+     "wort": "kennt.",
+     "zeit": 64.15
+    }
+   ],
+   "visuals": [
+    {
+     "zeit": 59.35,
+     "anker": "Speicher",
+     "typ": "icon",
+     "beschreibung": "Speichern-Symbol."
+    },
+    {
+     "zeit": 64.15,
+     "anker": "kennt",
+     "typ": "logo",
+     "beschreibung": "Zurück zum GitHub-Zeichen vom Anfang."
+    }
+   ]
+  }
+ ]
+}

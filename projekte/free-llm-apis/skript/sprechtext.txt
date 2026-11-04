@@ -1,0 +1,20 @@
+Dieses GitHub-Repo kennt kaum jemand.
+Dabei bekommst du damit starke KI-Modelle, ohne einen Cent für die API zu zahlen.
+Es listet über 500 kostenlose KI-APIs von 30 Anbietern.
+Dauerhaft kostenlos.
+Keine Testguthaben, die nach einem Monat verfallen.
+Und bei den meisten brauchst du nicht mal eine Kreditkarte.
+Das Repo heißt awesome free LLM APIs.
+Drin sind Google, Nvidia, Mistral, Groq, DeepSeek und viele mehr.
+Und jetzt kommt der Teil, der es wirklich nützlich macht.
+Für Claude Code, Cursor und Codex liegen fertige Konfigurationen bereit.
+Kein kompliziertes Setup.
+Kein Wühlen in Dokumentationen.
+Kopieren, einfügen, fertig.
+Klar, auch die Gratis-Stufen haben Limits.
+Aber du kannst einfach zwischen 30 Anbietern wechseln.
+Und die Liste wird täglich aktualisiert.
+Kommt ein neues Gratis-Angebot, steht es schon drin.
+Für KI zu bezahlen ist damit eine Entscheidung.
+Keine Pflicht.
+Speicher dir das, und folg mir für mehr KI-Tools, die kaum jemand kennt.

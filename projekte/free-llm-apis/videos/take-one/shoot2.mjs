@@ -1,0 +1,11 @@
+import { chromium } from 'playwright-core';
+const b = await chromium.launch({ channel: 'chrome', headless: true });
+const p = await b.newPage({ viewport: { width: 1100, height: 1400 }, deviceScaleFactor: 2, colorScheme: 'light' });
+await p.goto('https://github.com/open-free-llm-api/awesome-freellm-apis', { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
+await p.addStyleTag({ content: '[class*="sticky"], .js-sticky, header.AppHeader, .position-sticky { position: static !important; } ' });
+const snap = async (loc, file) => { if (await loc.count()) { await loc.first().scrollIntoViewIfNeeded(); await loc.first().screenshot({ path: file }); console.log('ok', file); } else console.log('missing', file); };
+await snap(p.locator('article.markdown-body table').first(), 'assets/shots/table-free.png');
+await snap(p.locator('article.markdown-body .highlight, article.markdown-body pre').filter({ hasText: 'Settings → Models' }), 'assets/shots/config-cursor.png');
+await snap(p.locator('article.markdown-body .highlight, article.markdown-body pre').filter({ hasText: 'ANTHROPIC_BASE_URL' }), 'assets/shots/config-claude.png');
+await snap(p.locator('article.markdown-body .highlight, article.markdown-body pre').filter({ hasText: 'OPENAI_BASE_URL' }), 'assets/shots/config-codex.png');
+await b.close();

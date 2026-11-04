@@ -1,0 +1,285 @@
+{
+ "fps": 30,
+ "seed": 11,
+ "key": "A",
+ "bpm": 120,
+ "cues": [
+  {
+   "kind": "pop",
+   "frame": 14,
+   "label": "GitHub-Zeichen",
+   "variant": "cork"
+  },
+  {
+   "kind": "pop",
+   "frame": 38,
+   "label": "Fragezeichen",
+   "variant": "tiny"
+  },
+  {
+   "kind": "swish",
+   "frame": 129,
+   "label": "Rechnung",
+   "variant": "in"
+  },
+  {
+   "kind": "press",
+   "frame": 168,
+   "label": "0,00 €",
+   "variant": "thock"
+  },
+  {
+   "kind": "swish",
+   "frame": 258,
+   "label": "Repo-Karte",
+   "variant": "in"
+  },
+  {
+   "kind": "chime",
+   "frame": 288,
+   "label": "513+ markiert",
+   "variant": "glint"
+  },
+  {
+   "kind": "swish",
+   "frame": 382,
+   "label": "Tabelle",
+   "variant": "in"
+  },
+  {
+   "kind": "press",
+   "frame": 428,
+   "label": "✗ Testguthaben",
+   "variant": "soft"
+  },
+  {
+   "kind": "press",
+   "frame": 618,
+   "label": "✗ Kreditkarte",
+   "variant": "soft"
+  },
+  {
+   "kind": "tick",
+   "frame": 662,
+   "label": "Taste 0",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 665,
+   "label": "Taste 2",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 668,
+   "label": "Taste 4",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 670,
+   "label": "Taste 6",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 673,
+   "label": "Taste 8",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 676,
+   "label": "Taste 10",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 679,
+   "label": "Taste 12",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 681,
+   "label": "Taste 14",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 684,
+   "label": "Taste 16",
+   "variant": "key"
+  },
+  {
+   "kind": "tick",
+   "frame": 687,
+   "label": "Taste 18",
+   "variant": "key"
+  },
+  {
+   "kind": "pop",
+   "frame": 760,
+   "label": "Logo Google",
+   "variant": "pop"
+  },
+  {
+   "kind": "pop",
+   "frame": 772,
+   "label": "Logo Nvidia",
+   "variant": "pop"
+  },
+  {
+   "kind": "pop",
+   "frame": 785,
+   "label": "Logo Mistral",
+   "variant": "pop"
+  },
+  {
+   "kind": "pop",
+   "frame": 796,
+   "label": "Logo Groq",
+   "variant": "pop"
+  },
+  {
+   "kind": "pop",
+   "frame": 808,
+   "label": "Logo DeepSeek",
+   "variant": "pop"
+  },
+  {
+   "kind": "pop",
+   "frame": 832,
+   "label": "Logo 5",
+   "variant": "tiny"
+  },
+  {
+   "kind": "pop",
+   "frame": 838,
+   "label": "Logo 7",
+   "variant": "tiny"
+  },
+  {
+   "kind": "pop",
+   "frame": 843,
+   "label": "Logo 9",
+   "variant": "tiny"
+  },
+  {
+   "kind": "pop",
+   "frame": 849,
+   "label": "Logo 11",
+   "variant": "tiny"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 869,
+   "label": "Logos sammeln sich",
+   "variant": "soft"
+  },
+  {
+   "kind": "swish",
+   "frame": 1007,
+   "label": "Ast Claude",
+   "variant": "soft"
+  },
+  {
+   "kind": "swish",
+   "frame": 1030,
+   "label": "Ast Cursor",
+   "variant": "soft"
+  },
+  {
+   "kind": "swish",
+   "frame": 1055,
+   "label": "Ast Codex",
+   "variant": "soft"
+  },
+  {
+   "kind": "swish",
+   "frame": 1089,
+   "label": "Schnipsel",
+   "variant": "in"
+  },
+  {
+   "kind": "press",
+   "frame": 1150,
+   "label": "✗ Setup",
+   "variant": "soft"
+  },
+  {
+   "kind": "press",
+   "frame": 1180,
+   "label": "✗ Dokus",
+   "variant": "soft"
+  },
+  {
+   "kind": "swish",
+   "frame": 1220,
+   "label": "Codex-Schnipsel",
+   "variant": "in"
+  },
+  {
+   "kind": "chime",
+   "frame": 1250,
+   "label": "Haken fertig",
+   "variant": "glint"
+  },
+  {
+   "kind": "pop",
+   "frame": 1326,
+   "label": "Limit-Meldung",
+   "variant": "cork"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 1440,
+   "label": "Anbieter wechseln",
+   "variant": "fast"
+  },
+  {
+   "kind": "chime",
+   "frame": 1504,
+   "label": "Globus",
+   "variant": "bell"
+  },
+  {
+   "kind": "tick",
+   "frame": 1564,
+   "label": "neue Zeile",
+   "variant": "ui"
+  },
+  {
+   "kind": "chime",
+   "frame": 1588,
+   "label": "schon drin",
+   "variant": "glint"
+  },
+  {
+   "kind": "riser",
+   "frame": 1728,
+   "label": "Aufbau",
+   "lengthS": 1.4,
+   "variant": "soft"
+  },
+  {
+   "kind": "impact",
+   "frame": 1730,
+   "label": "Entscheidung",
+   "variant": "soft"
+  },
+  {
+   "kind": "pop",
+   "frame": 1792,
+   "label": "Lesezeichen",
+   "variant": "cork"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 1914,
+   "label": "zurück zum Anfang",
+   "variant": "soft"
+  }
+ ]
+}
