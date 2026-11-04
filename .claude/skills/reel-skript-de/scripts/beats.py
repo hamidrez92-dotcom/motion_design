@@ -189,7 +189,8 @@ def pruefe(meta, beats):
         tw = len(b["text"].split())
         if tw > MAX_TEXT_WOERTER:
             warn.append(f"{bid}: TEXT hat {tw} Wörter (max. {MAX_TEXT_WOERTER}).")
-        if b["text"] and norm(b["text"]) and norm(b["text"]) in norm(b["sprech"]):
+        # Ein einzelnes Stichwort aus dem Sprechtext ist gewollt; ganze Satzteile nicht.
+        if tw >= 3 and " ".join(map(norm, b["text"].split())) in " ".join(map(norm, b["sprech"].split())):
             warn.append(f"{bid}: TEXT wiederholt nur den Sprechtext — lieber das Stichwort.")
         for satz in re.split(r"(?<=[.!?])\s+", b["sprech"]):
             n = len([w for w in satz.split() if norm(w)])

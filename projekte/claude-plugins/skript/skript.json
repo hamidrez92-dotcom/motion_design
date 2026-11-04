@@ -1,0 +1,354 @@
+{
+ "titel": "5 Claude-Plugins, die du zuerst installierst",
+ "quelle": "../quelle/artikel.md",
+ "zeiten": "geschätzt",
+ "wpm": 145.0,
+ "dauer": 79.93,
+ "format": {
+  "breite": 1080,
+  "hoehe": 1920,
+  "safe_zone": {
+   "oben": 230,
+   "unten": 1440,
+   "rechts": 230
+  }
+ },
+ "beats": [
+  {
+   "id": "B01",
+   "rolle": "HOOK",
+   "start": 0.0,
+   "ende": 3.51,
+   "sprech": "Installier diese fünf Plugins, bevor du Claude nutzt.",
+   "text": "Erst die Plugins. Dann Claude.",
+   "visuals": [
+    {
+     "zeit": 1.24,
+     "anker": "Plugins",
+     "typ": "ui",
+     "beschreibung": "Das Claude-Chatfenster, davor fünf Plugin-Karten mit den echten Namen Marketing, Finance, Legal, Design, Productivity, jede mit „by Anthropic“ darunter."
+    }
+   ]
+  },
+  {
+   "id": "B02",
+   "rolle": "KONTEXT",
+   "start": 3.66,
+   "ende": 9.44,
+   "sprech": "Ohne Plugins ist Claude ein Chatbot. Mit Plugins arbeitet Claude wie ein Mitarbeiter.",
+   "text": "Chatbot → Mitarbeiter",
+   "visuals": [
+    {
+     "zeit": 5.73,
+     "anker": "Chatbot",
+     "typ": "chat",
+     "beschreibung": "Ein einfacher Chatverlauf: eine Frage, eine Antwort. Mehr passiert nicht."
+    },
+    {
+     "zeit": 8.83,
+     "anker": "Mitarbeiter",
+     "typ": "vergleich",
+     "beschreibung": "Links „Chatbot“, rechts „Mitarbeiter“, der Pfeil dazwischen ist das Plugin."
+    }
+   ]
+  },
+  {
+   "id": "B03",
+   "rolle": "PUNKT",
+   "start": 9.59,
+   "ende": 16.2,
+   "sprech": "Stell dir einen neuen Kollegen vor. Am ersten Tag bekommt er die Einarbeitungsmappe seiner Abteilung.",
+   "text": null,
+   "visuals": [
+    {
+     "zeit": 11.24,
+     "anker": "Kollegen",
+     "typ": "metapher",
+     "beschreibung": "Ein neuer Kollege an einem leeren Schreibtisch."
+    },
+    {
+     "zeit": 14.76,
+     "anker": "Einarbeitungsmappe",
+     "typ": "metapher",
+     "beschreibung": "Ihm wird eine dicke Mappe mit der Aufschrift „Marketing“ übergeben."
+    }
+   ]
+  },
+  {
+   "id": "B04",
+   "rolle": "PUNKT",
+   "start": 16.35,
+   "ende": 22.95,
+   "sprech": "Genau das ist ein Plugin. Skills und Verbindungen zu deinen Tools, gebündelt für einen Job.",
+   "text": "Plugin = Skills + Connectors",
+   "visuals": [
+    {
+     "zeit": 18.0,
+     "anker": "Plugin",
+     "typ": "diagramm",
+     "beschreibung": "Die Mappe öffnet sich als Plugin: darin Skills, also Anleitungen, und Connectors, also Kabel zu Tools wie E-Mail und Kalender."
+    },
+    {
+     "zeit": 22.34,
+     "anker": "Job",
+     "typ": "text",
+     "beschreibung": "„Ein Plugin, ein Job.“"
+    }
+   ]
+  },
+  {
+   "id": "B05",
+   "rolle": "PUNKT",
+   "start": 23.1,
+   "ende": 26.61,
+   "sprech": "Marketing plant Kampagnen und Posts in deiner Markenstimme.",
+   "text": "Marketing",
+   "visuals": [
+    {
+     "zeit": 23.1,
+     "anker": "Marketing",
+     "typ": "ui",
+     "beschreibung": "Plugin-Karte Marketing wird aktiv."
+    },
+    {
+     "zeit": 23.93,
+     "anker": "Kampagnen",
+     "typ": "liste",
+     "beschreibung": "Ein 30-Tage-Kalender mit Posts, darüber „in deiner Markenstimme“."
+    }
+   ]
+  },
+  {
+   "id": "B06",
+   "rolle": "PUNKT",
+   "start": 26.76,
+   "ende": 30.69,
+   "sprech": "Finance macht aus deiner Tabelle eine Gewinn- und Verlustrechnung.",
+   "text": "Finance",
+   "visuals": [
+    {
+     "zeit": 26.76,
+     "anker": "Finance",
+     "typ": "ui",
+     "beschreibung": "Plugin-Karte Finance wird aktiv."
+    },
+    {
+     "zeit": 28.42,
+     "anker": "Tabelle",
+     "typ": "diagramm",
+     "beschreibung": "Eine Tabelle mit Einnahmen und Kosten wird zu einer sauberen Gewinn- und Verlustrechnung."
+    }
+   ]
+  },
+  {
+   "id": "B07",
+   "rolle": "PUNKT",
+   "start": 30.84,
+   "ende": 33.93,
+   "sprech": "Legal markiert riskante Klauseln, bevor du unterschreibst.",
+   "text": "Legal",
+   "visuals": [
+    {
+     "zeit": 30.84,
+     "anker": "Legal",
+     "typ": "ui",
+     "beschreibung": "Plugin-Karte Legal wird aktiv."
+    },
+    {
+     "zeit": 32.08,
+     "anker": "Klauseln",
+     "typ": "screenshot",
+     "beschreibung": "Ein Vertrag, drei Klauseln markiert mit niedrig, mittel und hoch."
+    }
+   ]
+  },
+  {
+   "id": "B08",
+   "rolle": "PUNKT",
+   "start": 34.08,
+   "ende": 38.84,
+   "sprech": "Design sagt dir ehrlich, was an deiner Seite nach KI aussieht.",
+   "text": "Design",
+   "visuals": [
+    {
+     "zeit": 34.08,
+     "anker": "Design",
+     "typ": "ui",
+     "beschreibung": "Plugin-Karte Design wird aktiv."
+    },
+    {
+     "zeit": 37.81,
+     "anker": "KI",
+     "typ": "screenshot",
+     "beschreibung": "Eine Website mit Anmerkungen: „wirkt generisch“, „schwer lesbar“."
+    }
+   ]
+  },
+  {
+   "id": "B09",
+   "rolle": "PUNKT",
+   "start": 38.99,
+   "ende": 43.32,
+   "sprech": "Und Productivity führt deine Aufgaben und merkt sich deine Projekte.",
+   "text": "Productivity",
+   "visuals": [
+    {
+     "zeit": 39.4,
+     "anker": "Productivity",
+     "typ": "ui",
+     "beschreibung": "Plugin-Karte Productivity wird aktiv."
+    },
+    {
+     "zeit": 40.64,
+     "anker": "Aufgaben",
+     "typ": "liste",
+     "beschreibung": "Eine Aufgabenliste mit Häkchen, daneben kleine Kärtchen mit Personen und Projekten als Gedächtnis."
+    }
+   ]
+  },
+  {
+   "id": "B10",
+   "rolle": "PUNKT",
+   "start": 43.47,
+   "ende": 49.87,
+   "sprech": "Installiert in etwa zwei Minuten. Customize, Plugins, Discover. Nimm nur die mit by Anthropic.",
+   "text": "~2 Minuten · bezahlter Plan",
+   "visuals": [
+    {
+     "zeit": 44.72,
+     "anker": "zwei",
+     "typ": "zahl",
+     "beschreibung": "Ein Zähler bei rund zwei Minuten, darunter klein „nur mit bezahltem Plan“."
+    },
+    {
+     "zeit": 45.74,
+     "anker": "Customize",
+     "typ": "ui",
+     "beschreibung": "Die linke Seitenleiste von Claude: „Customize“, dann der Tab „Plugins“, dann „Discover“."
+    },
+    {
+     "zeit": 49.25,
+     "anker": "Anthropic",
+     "typ": "ui",
+     "beschreibung": "Suchergebnisse mit ähnlichen Namen, nur die Karten mit „by Anthropic“ sind hervorgehoben, ein Klick aufs Plus."
+    }
+   ]
+  },
+  {
+   "id": "B11",
+   "rolle": "PUNKT",
+   "start": 50.02,
+   "ende": 55.38,
+   "sprech": "Dann kommt das Einarbeitungsgespräch. Ein einziger Prompt, und Claude fragt dich aus.",
+   "text": "Ein Prompt",
+   "visuals": [
+    {
+     "zeit": 51.26,
+     "anker": "Einarbeitungsgespräch",
+     "typ": "metapher",
+     "beschreibung": "Der neue Kollege und du am Tisch, die Mappe liegt dazwischen."
+    },
+    {
+     "zeit": 52.7,
+     "anker": "Prompt",
+     "typ": "chat",
+     "beschreibung": "Du schickst: „Ich habe gerade deine Plugins Marketing, Finance, Legal, Design und Productivity installiert. Richte sie für mich ein.“"
+    }
+   ]
+  },
+  {
+   "id": "B12",
+   "rolle": "PUNKT",
+   "start": 55.53,
+   "ende": 62.14,
+   "sprech": "Eine Frage nach der anderen. Was du machst, wie du schreibst, was diese Woche zählt.",
+   "text": null,
+   "visuals": [
+    {
+     "zeit": 55.95,
+     "anker": "Frage",
+     "typ": "chat",
+     "beschreibung": "Claude fragt: „Was machst du, und für wen?“"
+    },
+    {
+     "zeit": 59.87,
+     "anker": "schreibst",
+     "typ": "chat",
+     "beschreibung": "Claude fragt nach einem Text von dir, für deine Markenstimme."
+    },
+    {
+     "zeit": 61.11,
+     "anker": "Woche",
+     "typ": "liste",
+     "beschreibung": "Drei leere Kästchen: deine drei Prioritäten dieser Woche."
+    }
+   ]
+  },
+  {
+   "id": "B13",
+   "rolle": "WENDE",
+   "start": 62.29,
+   "ende": 68.07,
+   "sprech": "Eine Grenze hat das Ganze. Legal findet Risiken, ist aber nicht dein Anwalt.",
+   "text": "Kein Anwalt",
+   "visuals": [
+    {
+     "zeit": 65.39,
+     "anker": "Risiken",
+     "typ": "screenshot",
+     "beschreibung": "Der markierte Vertrag von vorhin."
+    },
+    {
+     "zeit": 67.46,
+     "anker": "Anwalt",
+     "typ": "text",
+     "beschreibung": "„Claude ist nicht dein Anwalt.“ Daneben: „Bei großen Verträgen: Anwalt fragen.“"
+    }
+   ]
+  },
+  {
+   "id": "B14",
+   "rolle": "PAYOFF",
+   "start": 68.22,
+   "ende": 73.58,
+   "sprech": "Fünf Plugins, zwei Minuten, ein Prompt. Aus dem Chatbot wird ein Kollege.",
+   "text": "5 · 2 · 1",
+   "visuals": [
+    {
+     "zeit": 68.22,
+     "anker": "Fünf",
+     "typ": "zahl",
+     "beschreibung": "Drei Zahlen nacheinander, jeweils auf dem Wort: 5 Plugins, 2 Minuten, 1 Prompt."
+    },
+    {
+     "zeit": 72.97,
+     "anker": "Kollege",
+     "typ": "metapher",
+     "beschreibung": "Der Kollege von vorhin, jetzt mit allen fünf Mappen auf dem Tisch."
+    }
+   ]
+  },
+  {
+   "id": "B15",
+   "rolle": "CTA",
+   "start": 73.73,
+   "ende": 79.93,
+   "sprech": "Speicher dir das. Und installier die Plugins, bevor du Claude das nächste Mal nutzt.",
+   "text": "Speichern",
+   "visuals": [
+    {
+     "zeit": 73.73,
+     "anker": "Speicher",
+     "typ": "icon",
+     "beschreibung": "Das Speichern-Symbol von Instagram."
+    },
+    {
+     "zeit": 78.49,
+     "anker": "nächste Mal",
+     "typ": "ui",
+     "beschreibung": "Zurück zum Anfang: das Claude-Chatfenster mit den fünf Plugin-Karten davor."
+    }
+   ]
+  }
+ ]
+}
