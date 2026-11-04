@@ -19,5 +19,6 @@ Reels (60–90 s, 1080×1920, deutsch) aus Artikeln: erst ein Skript, dann bebil
 |---|---|---|
 | huashu-motion 0.3.1 | `vendor/huashu-motion` (Kopie von github.com/alchaincyf/huashu-motion, Commit in `.upstream-commit`), verlinkt nach `.claude/skills/huashu-motion` | `.claude/skills/huashu-motion/bin/om …` |
 | take-one 0.1.0 | `vendor/take-one` (Kopie von github.com/talsiach/take-one, Commit in `.upstream-commit`), verlinkt nach `.claude/skills/take-one`; Anthropic-Schriften pro Projekt mit `fetch-fonts.sh` holen (nicht im Git) | `node <projekt>/frames.mjs`, `bash vendor/take-one/scripts/render-parallel.sh` |
+| stickman-video-director (directing-stickman-videos) | `vendor/stickman-video-director` (Kopie von github.com/kaomei/stickman-video-director ohne README-Demos, Commit in `.upstream-commit`), verlinkt nach `.claude/skills/directing-stickman-videos`; `npm ci` im Skill-Ordner | `node scripts/autopilot.mjs doctor\|validate\|preview\|render` (braucht Sprecherstimme; Bilder/Stimme optional über `GEMINI_API_KEY`) |
 
 Neue Skills genauso: unter `vendor/<name>/` ablegen, nach `.claude/skills/<name>` verlinken, Zeile hier ergänzen.

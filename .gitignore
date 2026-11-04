@@ -5,3 +5,6 @@ __pycache__/
 .om/
 **/out/frames/
 .last-update-check
+
+# stickman-video-director: npm-Abhängigkeiten
+vendor/stickman-video-director/skills/directing-stickman-videos/node_modules/
