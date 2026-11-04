@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+__pycache__/
+# huashu-motion: Versionshistorie, Zwischenbilder, Update-Check
+.om/
+**/out/frames/
+.last-update-check
