@@ -1,0 +1,7 @@
+assets/brand-fonts/
+node_modules/
+review/
+review-*/
+frames/
+*.tmp
+audio/*.wav

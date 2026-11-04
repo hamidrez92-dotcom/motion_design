@@ -1,0 +1,376 @@
+{
+ "fps": 30,
+ "seed": 7,
+ "key": "G",
+ "bpm": 65.7,
+ "cues": [
+  {
+   "kind": "pop",
+   "frame": 10,
+   "label": "Mappe 1 landet",
+   "variant": "cork"
+  },
+  {
+   "kind": "paper",
+   "frame": 20,
+   "label": "Mappe 2 landet",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 30,
+   "label": "Mappe 3 landet",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 40,
+   "label": "Mappe 4 landet",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 47,
+   "label": "Mappe 5 landet",
+   "variant": "slide"
+  },
+  {
+   "kind": "chime",
+   "frame": 79,
+   "label": "Dann Claude.",
+   "variant": "glint"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 108,
+   "label": "Schnitt Laptop",
+   "variant": "soft"
+  },
+  {
+   "kind": "pop",
+   "frame": 150,
+   "label": "Antwort im Chat",
+   "variant": "tiny"
+  },
+  {
+   "kind": "paper",
+   "frame": 176,
+   "label": "Zettel Chatbot",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 267,
+   "label": "Ausweis landet",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 442,
+   "label": "Mappe Marketing",
+   "variant": "slide"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 489,
+   "label": "Schnitt Mappe",
+   "variant": "soft"
+  },
+  {
+   "kind": "paper",
+   "frame": 504,
+   "label": "Mappe klappt auf",
+   "variant": "flip"
+  },
+  {
+   "kind": "paper",
+   "frame": 550,
+   "label": "Skill-Blatt 1",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 558,
+   "label": "Skill-Blatt 2",
+   "variant": "rustle"
+  },
+  {
+   "kind": "paper",
+   "frame": 567,
+   "label": "Skill-Blatt 3",
+   "variant": "rustle"
+  },
+  {
+   "kind": "pop",
+   "frame": 598,
+   "label": "Connector 1",
+   "variant": "tiny"
+  },
+  {
+   "kind": "pop",
+   "frame": 603,
+   "label": "Connector 2",
+   "variant": "tiny"
+  },
+  {
+   "kind": "pop",
+   "frame": 608,
+   "label": "Connector 3",
+   "variant": "tiny"
+  },
+  {
+   "kind": "press",
+   "frame": 672,
+   "label": "Stempel Ein Plugin",
+   "variant": "thock"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 692,
+   "label": "Schnitt Plugin-Reihe",
+   "variant": "soft"
+  },
+  {
+   "kind": "ink",
+   "frame": 722,
+   "label": "Post gestempelt 1",
+   "variant": "plip"
+  },
+  {
+   "kind": "ink",
+   "frame": 733,
+   "label": "Post gestempelt 2",
+   "variant": "plip"
+  },
+  {
+   "kind": "ink",
+   "frame": 743,
+   "label": "Post gestempelt 3",
+   "variant": "plip"
+  },
+  {
+   "kind": "swish",
+   "frame": 800,
+   "label": "Fahrt zu Finance",
+   "variant": "soft"
+  },
+  {
+   "kind": "paper",
+   "frame": 856,
+   "label": "GuV-Blatt",
+   "variant": "slide"
+  },
+  {
+   "kind": "swish",
+   "frame": 922,
+   "label": "Fahrt zu Legal",
+   "variant": "soft"
+  },
+  {
+   "kind": "swish",
+   "frame": 965,
+   "label": "Textmarker 1",
+   "variant": "in"
+  },
+  {
+   "kind": "swish",
+   "frame": 978,
+   "label": "Textmarker 2",
+   "variant": "in"
+  },
+  {
+   "kind": "swish",
+   "frame": 991,
+   "label": "Textmarker 3",
+   "variant": "in"
+  },
+  {
+   "kind": "swish",
+   "frame": 1019,
+   "label": "Fahrt zu Design",
+   "variant": "soft"
+  },
+  {
+   "kind": "paper",
+   "frame": 1124,
+   "label": "Zettel wirkt generisch",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 1142,
+   "label": "Zettel schwer lesbar",
+   "variant": "slide"
+  },
+  {
+   "kind": "swish",
+   "frame": 1179,
+   "label": "Fahrt zu Productivity",
+   "variant": "soft"
+  },
+  {
+   "kind": "tick",
+   "frame": 1223,
+   "label": "Haken 1",
+   "variant": "ui"
+  },
+  {
+   "kind": "tick",
+   "frame": 1232,
+   "label": "Haken 2",
+   "variant": "ui"
+  },
+  {
+   "kind": "tick",
+   "frame": 1242,
+   "label": "Haken 3",
+   "variant": "ui"
+  },
+  {
+   "kind": "paper",
+   "frame": 1272,
+   "label": "Karte Personen",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 1281,
+   "label": "Karte Projekte",
+   "variant": "slide"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 1303,
+   "label": "Schnitt Installation",
+   "variant": "soft"
+  },
+  {
+   "kind": "paper",
+   "frame": 1354,
+   "label": "Zettel bezahlter Plan",
+   "variant": "slide"
+  },
+  {
+   "kind": "press",
+   "frame": 1375,
+   "label": "Haken Menüweg",
+   "variant": "soft"
+  },
+  {
+   "kind": "press",
+   "frame": 1388,
+   "label": "Haken Menüweg",
+   "variant": "soft"
+  },
+  {
+   "kind": "press",
+   "frame": 1400,
+   "label": "Haken Menüweg",
+   "variant": "soft"
+  },
+  {
+   "kind": "chime",
+   "frame": 1482,
+   "label": "by Anthropic bleibt",
+   "variant": "glint"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 1499,
+   "label": "Schnitt Setup",
+   "variant": "soft"
+  },
+  {
+   "kind": "pop",
+   "frame": 1582,
+   "label": "Setup-Prompt",
+   "variant": "pop"
+  },
+  {
+   "kind": "pop",
+   "frame": 1678,
+   "label": "Frage 1",
+   "variant": "tiny"
+  },
+  {
+   "kind": "pop",
+   "frame": 1792,
+   "label": "Frage 2",
+   "variant": "tiny"
+  },
+  {
+   "kind": "paper",
+   "frame": 1827,
+   "label": "Block Prioritäten",
+   "variant": "slide"
+  },
+  {
+   "kind": "press",
+   "frame": 2024,
+   "label": "Stempel Kein Anwalt",
+   "gainDb": 3,
+   "variant": "thock"
+  },
+  {
+   "kind": "paper",
+   "frame": 2040,
+   "label": "Zettel Anwalt fragen",
+   "variant": "slide"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 2045,
+   "label": "Schnitt Payoff",
+   "variant": "soft"
+  },
+  {
+   "kind": "riser",
+   "frame": 2047,
+   "label": "Aufbau in den Payoff",
+   "lengthS": 1.6,
+   "variant": "soft"
+  },
+  {
+   "kind": "impact",
+   "frame": 2048,
+   "label": "5 Plugins",
+   "variant": "bloom"
+  },
+  {
+   "kind": "paper",
+   "frame": 2078,
+   "label": "2 Minuten",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 2102,
+   "label": "1 Prompt",
+   "variant": "slide"
+  },
+  {
+   "kind": "paper",
+   "frame": 2193,
+   "label": "Ausweis auf dem Stapel",
+   "variant": "slide"
+  },
+  {
+   "kind": "chime",
+   "frame": 2200,
+   "label": "Kollege",
+   "variant": "sparkle"
+  },
+  {
+   "kind": "swish",
+   "frame": 2213,
+   "label": "Lesezeichen",
+   "variant": "in"
+  },
+  {
+   "kind": "whoosh",
+   "frame": 2341,
+   "label": "zurück zum Anfang",
+   "variant": "soft"
+  }
+ ]
+}

@@ -18,5 +18,6 @@ Reels (60–90 s, 1080×1920, deutsch) aus Artikeln: erst ein Skript, dann bebil
 | Skill | Ort | Aufruf |
 |---|---|---|
 | huashu-motion 0.3.1 | `vendor/huashu-motion` (Kopie von github.com/alchaincyf/huashu-motion, Commit in `.upstream-commit`), verlinkt nach `.claude/skills/huashu-motion` | `.claude/skills/huashu-motion/bin/om …` |
+| take-one 0.1.0 | `vendor/take-one` (Kopie von github.com/talsiach/take-one, Commit in `.upstream-commit`), verlinkt nach `.claude/skills/take-one`; Anthropic-Schriften pro Projekt mit `fetch-fonts.sh` holen (nicht im Git) | `node <projekt>/frames.mjs`, `bash vendor/take-one/scripts/render-parallel.sh` |
 
 Neue Skills genauso: unter `vendor/<name>/` ablegen, nach `.claude/skills/<name>` verlinken, Zeile hier ergänzen.
